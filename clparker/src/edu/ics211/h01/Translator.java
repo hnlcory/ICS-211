@@ -64,10 +64,10 @@ public class Translator implements Translate {
           //append string to string builder. need 2 hex digits******
           data.append(Integer.toHexString(number));
         }
-        
-        //Return the String or StringBuilder.toString(). 
-        return data.toString();
+       
       }
+      //Return the String or StringBuilder.toString(). 
+      return data.toString();
     } catch (IOException e) {
       e.printStackTrace();
     }
