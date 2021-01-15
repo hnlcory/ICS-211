@@ -49,11 +49,30 @@ public class Translator implements Translate {
   @Override
   public String asHexadecimalString(InputStream in) {
     //Create an empty String or StringBuilder class.
-    //Loop until (until in.read() returns -1) (a while loop) the InputStream is done, reading in a byte at a time. We then need to convert that byte to a hexadecimal string. You can use the Integer.toHexString method to convert that byte to a hexadecimal string.
-    // read byte from in
-    // convert byte to integer( .toHexString[];)
-    //append string to string builder. need 2 hex digits
-    //Return the String or StringBuilder.toString().
+    StringBuilder data = new StringBuilder();
+    try {
+      //Loop until (until in.read() returns -1) (a while loop) the InputStream is done.
+      while (true) {//(in.read() != -1***
+        // read byte from in
+        int number = in.read();
+        
+        if (number==-1) {
+          break;
+        }
+        else {
+          // convert byte to ( .toHexString[];)
+          //append string to string builder. need 2 hex digits******
+          data.append(Integer.toHexString(number));
+        }
+        
+        //Return the String or StringBuilder.toString(). 
+        return data.toString();
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    
     return null;
   }
 
@@ -61,21 +80,23 @@ public class Translator implements Translate {
   @Override
   public String asUtf8String(InputStream in) {
     
-    try {
-      int number= in.available();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    // Create an array of bytes.
-    //Fill the array from the InputStream.
-    //Return the newly constructed String.
+    //create an array of bytes
+    byte[] byteArray;
+    
+      try {
+        //fill the array from input stream
+        byteArray = in.readAllBytes();
+        
+        //create & return the newly constructed String
+        String stringBytes = new String(byteArray);
+        return stringBytes;
+        
+      } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      } 
     return null;
-    
-    
-    //get the number of bytes available
-    //create an array of bytes that is number long
-    //fill the array from in
-    //return new String(bytes, "UTF-8")
+   
   }
 
 }
