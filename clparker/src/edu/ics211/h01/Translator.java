@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * @author Cory Parker 
+ * @author Cory Parker
  *
  */
 public class Translator implements Translate {
