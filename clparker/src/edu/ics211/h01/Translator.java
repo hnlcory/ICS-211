@@ -55,14 +55,22 @@ public class Translator implements Translate {
       while (true) {//(in.read() != -1***
         // read byte from in
         int number = in.read();
-        
+        System.out.println(number);
         if (number==-1) {
           break;
         }
         else {
+          String temp=Integer.toHexString(number);
           // convert byte to ( .toHexString[];)
           //append string to string builder. need 2 hex digits******
-          data.append(Integer.toHexString(number));
+          System.out.println(Integer.toString(number).length());
+          if (temp.length()==1) {//<2 doesn't work
+            System.out.println("add 0");
+            data.append(0);
+          }
+         
+          data.append(temp);
+          
         }
        
       }
