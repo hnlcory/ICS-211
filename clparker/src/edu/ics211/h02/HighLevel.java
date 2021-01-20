@@ -4,7 +4,7 @@
 package edu.ics211.h02;
 
 /**
- * @author Cory Parker
+ * @author Cory Parker.
  *
  */
 public abstract class HighLevel extends Cloud {
