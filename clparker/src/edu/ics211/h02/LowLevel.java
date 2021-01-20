@@ -10,8 +10,7 @@ package edu.ics211.h02;
 public abstract class LowLevel extends Cloud {
 
  
- // protected Integer altitude; - possibly redundant
- // protected CloudShape shape;
+ 
    
   protected LowLevel(Integer altitude, CloudShape shape) {
     super(altitude, shape);
