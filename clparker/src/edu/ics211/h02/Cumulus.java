@@ -13,7 +13,10 @@ public class Cumulus extends LowLevel {
    * 
    */
   public Cumulus() {
-    // TODO Auto-generated constructor stub
+    //call super here again?
+    //constructor with one parameter: altitude
+    //A constructor with no parameters. set the altitude to a valid random value for the cloud
+    // set CloudShape correctly
   }
 
 }

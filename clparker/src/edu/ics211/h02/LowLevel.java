@@ -12,7 +12,7 @@ public abstract class LowLevel extends Cloud {
  
  // protected Integer altitude; - possibly redundant
  // protected CloudShape shape;
-  
+   
   protected LowLevel(Integer altitude, CloudShape shape) {
     super(altitude, shape);
     if (altitude > 6500) {
