@@ -12,7 +12,7 @@ public class Cirrus extends HighLevel {
   /**
    * 
    */
-  public Cirrus() {
+  public Cirrus(Integer altitude) {
     // TODO Auto-generated constructor stub
   }
 

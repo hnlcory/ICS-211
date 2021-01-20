@@ -19,7 +19,8 @@ public abstract class Cloud {
    * @param shape
    */
   protected Cloud(Integer altitude, CloudShape shape) {
-    
+    this.altitude =altitude;
+    this.shape=shape;
   }
   
   /**
