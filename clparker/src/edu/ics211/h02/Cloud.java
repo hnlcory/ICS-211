@@ -35,7 +35,7 @@ public abstract class Cloud {
    * Returns cloud shape
    * @return
    */
-  public CloudShape getCloudShape() {
+  public CloudShape getShape() {
     return this.shape;
   }
   
@@ -51,7 +51,7 @@ public abstract class Cloud {
    * Sets Cloud Shape
    * @param shape
    */
-  public void setCloudShape(CloudShape shape) {
+  public void setShape(CloudShape shape) {
     this.shape = shape;
   }
   
