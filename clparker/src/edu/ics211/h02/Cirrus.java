@@ -15,19 +15,19 @@ public class Cirrus extends HighLevel {
    * 
    */
   public Cirrus() {
-    super(ranNum(), CloudShape.STRATO);
+    super(ranNum(), CloudShape.CIRRO);
     //A constructor with no parameters. set the altitude to a valid random value for the cloud
     // set CloudShape correctly
   }
   
   public Cirrus (Integer altitude) {
-    super(altitude, CloudShape.STRATO);
+    super(altitude, CloudShape.CIRRO);
     //constructor with one parameter: altitude  
   }
   
   public static int ranNum() {
     Random random = new Random();
-    int x = random.nextInt(6500);//change************
+    int x = random.nextInt(20001);//change************
     return x;
   }
 
