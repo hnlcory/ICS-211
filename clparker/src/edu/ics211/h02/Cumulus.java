@@ -15,10 +15,7 @@ public class Cumulus extends LowLevel {
    * 
    */
   public Cumulus() {
-    super(ranNum(),CloudShape.CUMULO);
-    
-    
-   
+    super(ranNum(), CloudShape.CUMULO);
     //A constructor with no parameters. set the altitude to a valid random value for the cloud
     // set CloudShape correctly
   }
