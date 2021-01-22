@@ -1,9 +1,11 @@
 /**
- * 
+ * Low level cloud.
+ * @author Cory Parker
  */
 package edu.ics211.h02;
 
 /**
+ * extends cloud to a Low level, checks for proper altitude.
  * @author Cory Parker
  *
  */
