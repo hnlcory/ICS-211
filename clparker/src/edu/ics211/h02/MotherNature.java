@@ -26,26 +26,70 @@ public class MotherNature implements CloudCreator {
 
   @Override
   public Cloud formACloud(Integer altitude, CloudShape shape) {
-    // TODO Auto-generated method stub
-    return null;
+    if (altitude <= 6500) {
+      if (altitude<0 || shape !=CloudShape.CUMULO) {
+        throw new IllegalArgumentException();
+      }
+      return new Cumulus(altitude);
+      //low level
+    }
+    
+    else if (altitude > 6501 && altitude < 19999) {
+      if (shape !=CloudShape.STRATO) {
+        throw new IllegalArgumentException();
+      }
+      return new Altostratus(altitude);
+      //mid level
+    }
+    
+    else {
+      if (shape !=CloudShape.STRATO && shape !=CloudShape.CIRRO) {
+        throw new IllegalArgumentException();//possibly here
+      }
+      else if (shape ==CloudShape.STRATO) {
+        return new Cirrostratus(altitude);
+      }
+      else {
+        return new Cirrus(altitude);
+      }
+      //high level
+    }  
   }
 
   @Override
   public Cloud formAHighLevelCloud(CloudShape shape) {
+    
     // TODO Auto-generated method stub
     return null;
   }
 
   @Override
   public Cloud formAMidLevelCloud(CloudShape shape) {
-    // TODO Auto-generated method stub
-    return null;
+    switch(shape) {
+      //case cumulo
+      case STRATO:
+        //return new cumulus
+        return new Altostratus();
+       //default throw exception
+       default:
+         throw new IllegalArgumentException();
+    }
   }
 
   @Override
   public Cloud formALowLevelCloud(CloudShape shape) {
-    // TODO Auto-generated method stub
-    return null;
+    //get valid low alt
+    //switch on shape
+    switch(shape) {
+      //case cumulo
+      case CUMULO:
+        //return new cumulus
+        return new Cumulus();
+       //default throw exception
+       default:
+         throw new IllegalArgumentException();
+    }
+    
   }
 
   
