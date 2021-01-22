@@ -27,7 +27,7 @@ public class Cirrostratus extends HighLevel {
   
   public static int ranNum() {
     Random random = new Random();
-    int x = random.nextInt(20001);//change************
+    int x = random.nextInt(15000) + 20000;//change************
     return x;
   }
 

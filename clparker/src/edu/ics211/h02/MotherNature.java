@@ -58,17 +58,28 @@ public class MotherNature implements CloudCreator {
 
   @Override
   public Cloud formAHighLevelCloud(CloudShape shape) {
-    
-    // TODO Auto-generated method stub
-    return null;
+   //get valid alt
+   //switch
+    switch(shape) {
+      case CIRRO:
+        return new Cirrus();
+        
+      case STRATO:
+        return new Cirrostratus();
+        
+      default:
+        throw new IllegalArgumentException();
+    }
   }
 
   @Override
   public Cloud formAMidLevelCloud(CloudShape shape) {
+    //get valid low alt
+    //switch on shape
     switch(shape) {
-      //case cumulo
+      //case strato
       case STRATO:
-        //return new cumulus
+        //return new 
         return new Altostratus();
        //default throw exception
        default:
@@ -83,7 +94,7 @@ public class MotherNature implements CloudCreator {
     switch(shape) {
       //case cumulo
       case CUMULO:
-        //return new cumulus
+        //return new 
         return new Cumulus();
        //default throw exception
        default:

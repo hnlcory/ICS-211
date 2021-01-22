@@ -27,7 +27,8 @@ public class Cirrus extends HighLevel {
   
   public static int ranNum() {
     Random random = new Random();
-    int x = random.nextInt(20001);//change************
+    int x = random.nextInt(15000) + 20000;//change************
+    System.out.println("cirrus "+x);
     return x;
   }
 
