@@ -56,6 +56,8 @@ public abstract class Cloud {
   public void setShape(CloudShape shape) {
     this.shape = shape;
   }
-  
+  //public String toString() {
+    //return this.altitude+ "";
+  //}
   
 }
