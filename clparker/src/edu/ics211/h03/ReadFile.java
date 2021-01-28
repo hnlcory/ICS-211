@@ -33,6 +33,8 @@ public class ReadFile implements IReadFile {
 
     dataIn.read(bytes);// fill array from DataInputStream
 
+    dataIn.close();
+    
     switch (encoding) {
       case 1:
         return new String(bytes, StandardCharsets.US_ASCII);
