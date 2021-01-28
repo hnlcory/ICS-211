@@ -10,7 +10,7 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * @author Cory Parker
- *
+ * Reads in a file with a specific encoding format.
  */
 public class ReadFile implements IReadFile {
 
@@ -49,7 +49,7 @@ public class ReadFile implements IReadFile {
         return new String(bytes, StandardCharsets.UTF_16);
       // StandardCharsets.UTF_16
       default:
-        throw new IllegalArgumentException();
+        throw new IOException();
     }
 
     // create data input stream from a file input stream from file name
