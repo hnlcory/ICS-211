@@ -20,7 +20,7 @@ public class ArraySorter<E> implements SortsArray<E> {
   }
 
   /**
-   * 
+   * @Author Cory Parker
    */
   @Override
   public void insertionSort(Comparator<E> compare, SortRecord<E>[] data) {
@@ -30,7 +30,7 @@ public class ArraySorter<E> implements SortsArray<E> {
      int posMin = fill;
      for (int next = fill + 1; next < n; next++) {
        data[fill].numberOfComparisons++;
-       int result =compare.compare(data[next].element, data[posMin].element);   //table[next].compareTo(table[posMin]) < 0) {
+       int result =compare.compare(data[next].element, data[posMin].element); //table[next].compareTo(table[posMin]) < 0) {
        if (result <0) {// may be >
          data[fill].numberOfSwaps++;
          posMin = next;
