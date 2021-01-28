@@ -25,8 +25,9 @@ public class ReadFile implements IReadFile {
   @Override
   public String readFile(String fileName) throws IOException {
 
-    DataInputStream dataIn = new DataInputStream(new FileInputStream(fileName)); // create data input stream from a file
-                                                                                 // input stream from file name
+    // create data input stream from a file   
+    DataInputStream dataIn = new DataInputStream(new FileInputStream(fileName));
+    // input stream from file name
     int numBytes = dataIn.readInt();// read in number of bytes (an integer) readInt
     int encoding = dataIn.readByte();// read in encoding (a byte) readByte
     byte[] bytes = new byte[numBytes];// create a byte[] of length numBytes
