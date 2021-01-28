@@ -19,6 +19,9 @@ public class ArraySorter<E> implements SortsArray<E> {
    sortTime=0;
   }
 
+  /**
+   * 
+   */
   @Override
   public void insertionSort(Comparator<E> compare, SortRecord<E>[] data) {
    long startTime = System.nanoTime();// start time from System.nanoTime();
@@ -26,15 +29,20 @@ public class ArraySorter<E> implements SortsArray<E> {
    for (int fill = 0; fill < n-1; fill++) {
      int posMin = fill;
      for (int next = fill + 1; next < n; next++) {
+       data[fill].numberOfComparisons++;
        int result =compare.compare(data[next].element, data[posMin].element);   //table[next].compareTo(table[posMin]) < 0) {
        if (result <0) {// may be >
+         data[fill].numberOfSwaps++;
          posMin = next;
+       }
      }
-   }
+     
      SortRecord<E> temp = data[fill];
      data[fill] = data[posMin];
      data[posMin] = temp;
+     
    }
+   
    //loop from 1 to data.length -1
     // remember item at i
     //remember where the item to the left of i is (i-1)
