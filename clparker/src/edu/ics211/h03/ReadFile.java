@@ -1,6 +1,8 @@
 /**
- * 
+ * Program to in a file with a specific formats.
+ * @author Cory Parker.
  */
+
 package edu.ics211.h03;
 
 import java.io.DataInputStream;
@@ -9,13 +11,16 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 /**
- * @author Cory Parker
  * Reads in a file with a specific encoding format.
+ * Fills in array from DataInputstream.
+ * @author Cory Parker.
  */
 public class ReadFile implements IReadFile {
 
   /**
+   * Reads files.
    * 
+   * @author Cory Parker.
    */
   public ReadFile() {
     // TODO Auto-generated constructor stub
@@ -25,7 +30,7 @@ public class ReadFile implements IReadFile {
   @Override
   public String readFile(String fileName) throws IOException {
 
-    // create data input stream from a file   
+    // create data input stream from a file
     DataInputStream dataIn = new DataInputStream(new FileInputStream(fileName));
     // input stream from file name
     int numBytes = dataIn.readInt();// read in number of bytes (an integer) readInt
@@ -35,7 +40,7 @@ public class ReadFile implements IReadFile {
     dataIn.read(bytes);// fill array from DataInputStream
 
     dataIn.close();
-    
+
     switch (encoding) {
       case 1:
         return new String(bytes, StandardCharsets.US_ASCII);
@@ -52,13 +57,6 @@ public class ReadFile implements IReadFile {
       default:
         throw new IOException();
     }
-
-    // create data input stream from a file input stream from file name
-    // read in number of bytes (an integer) readInt
-    // read in encoding (a byte) readByte
-    // create a byte[] of length numBytes
-    // fill array from DataInputStream
-    // switch 1-4 (return new string ...)
 
   }
 
