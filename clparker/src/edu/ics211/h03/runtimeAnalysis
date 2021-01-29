@@ -1,13 +1,20 @@
-Runtime Analysis for h03.
+Runtime Analysis for h03 by Cory.
 
 
 Insertion Sort:
 
+For Insertion Sort my calculations show it's time complexity at  O(n^2). As lines 36,37,56,and 57 are all constants,
+this is c1+c2+c1+c3. For lines 38,39,50,51,and 52, this would be c4*f,c5*f,c6*f,c6*f, and c6*f 
+(f being the fill in the loop). Lines 40,41,42 would be c7*f*f,c8*f*f, and c9*f*f. Lines 44,45, and 46 would 
+be c8*f*f*f and c8*f*f*f. This would mean that we end up with c1+c2+c3(c4+c5+c6)f + (c7+c8)f^2 + (c8+c9)^3.
+This works out to cT1f^3 + cT2f^2 + cT3. The constants are converted making O(n^2) as our end.
 
 
 Bubble Sort:
 
-
+For Bubble Sort my calculations show it's time complexity at     . 
 
 
 Selection Sort:
+
+For Selection Sort my calculations show it's time complexity at     .
