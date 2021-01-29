@@ -12,9 +12,16 @@ This works out to cT1f^3 + cT2f^2 + cT3. The constants are converted making O(n^
 
 Bubble Sort:
 
-For Bubble Sort my calculations show it's time complexity at     . 
+For Bubble Sort my calculations show it's time complexity at O(n^2). Lines 66,68,69,87,89, and 90 are constants adding up to
+c1+c2+c3+c3+c1. Lines 71 and 72 would be c4*e and c4*e. Lines 73,75, and 77 would be c5*e*e,c6*e*e, and c7*e*e. 
+Lines 79,80,81,82,83, and 84 would be c7*e*e*e,c8*e*e*e,c8*e*e*e,c8*e*e*e,c8*e*e*e, and c8*e*e*e. this would end up as
+c1+c2+c3(c4)e+(c5+c6+c7)e^2+(c7+c8)e^3. This would work out to cT1e^3 + cT2e^2 + cT3 which would be converted
+ making O(n^2).
 
 
 Selection Sort:
 
-For Selection Sort my calculations show it's time complexity at     .
+For Selection Sort my calculations show it's time complexity at     . Lines 101,118, and 119 would be c1,c9, and c9. Lines 103, and 104 would be c2*i,and c3*i.
+Lines 106, and 107 would be c4*i*i, and c5*i*i. Lines 108,109, and 110 would end up being c6*i*i*i,c7*i*i*i, and c7*i*i*i.
+Lines 113,114,and 115 would be c8*i,c8*i,and c8*i. This would end up being c1+c9+c9(c2+c3+c8)i+(c4+c5)i^2+(c6+c7)i^3. This would work out to cT1e^3 + cT2e^2 + cT3 
+and when converted makes O(n^2). 
