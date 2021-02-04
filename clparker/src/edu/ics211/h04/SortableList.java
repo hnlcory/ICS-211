@@ -23,6 +23,8 @@ public class SortableList<E> implements IList211<E>, ISortableList<E>{
 
   @Override
   public void insertionSort(Comparator<E> compare) {
+    swaps=0;
+    comps=0;
     //set swaps, comps to 0
     //Dont loop to data.length-1, loop from 1 to size-1(nothing at size, we start at 0)
     //dont have to pull data from sort record?, compare bc they are just E
@@ -31,44 +33,42 @@ public class SortableList<E> implements IList211<E>, ISortableList<E>{
 
   @Override
   public void bubbleSort(Comparator<E> compare) {
+    swaps=0;
+    comps=0;
     //set swaps, comps to 0
     
   }
 
   @Override
   public void selectionSort(Comparator<E> compare) {
+    swaps=0;
+    comps=0;
     //set swaps, comps to 0
     
   }
 
   @Override
   public int getNumberOfSwaps() {
-    //return swaps
-    return 0;
+   return swaps;
   }
 
   @Override
   public int getNumberOfComparisons() {
-    //return comps
-    return 0;
+   return comps;
   }
 
   @Override
   public double getSortTime() {
-    //return sort time
-    return 0;
+    return sortTime;
   }
 
   
   
-  
-  
-  
+
   @Override
   public E get(int index) {
-    //check index
-    //return data[index]
-    return null;
+   checkIndex(index);
+   return data[index];
   }
   
   private void checkIndex(int index) {
@@ -78,32 +78,31 @@ public class SortableList<E> implements IList211<E>, ISortableList<E>{
   }
 
   @Override
-  public E set(int index, Object element) {
-    //checkIndex
-    //remmeber value @ index
-    // set value at index to element
-    //return remembered
-    return null;
+  public E set(int index, E element) {
+    checkIndex(index);
+    E temp = data[index]; //remmeber value @ index
+   data[index]=element;// set value at index to element
+    return temp;//return remembered
   }
 
   @Override
-  public int indexOf(Object obj) {
-    //loop from 0 to size-1
-    //  if obj.equals(item at index)
-          //return index
-    //return -1
-    return 0;
+  public int indexOf(Object obj) {// ***may need to change to E type
+    for (int i=0; i<size-1; i++) {//loop 0 to size -1      *** may be weird bc i=0
+      if (obj.equals(data[i])){//  if obj.equals(item at index)
+        return i; //return index
+      }    
+    }
+    return -1;//not found
   }
 
   @Override
   public int size() {
-    //return size
-    return 0;
+   return size;
   }
 
   @Override
   public boolean add(E e) {
-    // add(size,e);
+    add(size, e);
     return true;
   }
 
