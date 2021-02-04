@@ -6,6 +6,8 @@ package edu.ics211.h04;
 import java.util.Arrays;
 import java.util.Comparator;
 
+import edu.ics211.h03.SortRecord;
+
 /**
  * @author Cory Parker
  *
@@ -36,8 +38,27 @@ public class SortableList<E> implements IList211<E>, ISortableList<E>{
   public void bubbleSort(Comparator<E> compare) {
     swaps=0;
     comps=0;
-    //set swaps, comps to 0
+    boolean exchange = false;
+    int pass = 0;
     
+    do { // do while loop
+      exchange = false; // set we havent changed
+      for (int i = 1; i < data.length - pass; i++) {
+
+        comps++;// count compare
+
+        int result = compare.compare(data[i], data[i - 1]);
+
+        if (result < 0) {
+          swaps++;// count swap
+          E temp = data[i];
+          data[i] = data[i - 1];
+          data[i - 1] = temp;
+          exchange = true;// change exchange to true
+        }
+      }
+      pass++;
+    } while (exchange);
   }
 
   @Override
