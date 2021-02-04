@@ -32,6 +32,25 @@ public class SortableList<E> implements IList211<E>, ISortableList<E>{
     //Dont loop to data.length-1, loop from 1 to size-1(nothing at size, we start at 0)
     //dont have to pull data from sort record?, compare bc they are just E
     
+    int n = data.length;
+    for (int fill = 0; fill < n - 1; fill++) {
+      int posMin = fill;
+      for (int next = fill + 1; next < n; next++) {
+        comps++;
+        int result = compare.compare(data[next], data[posMin]);
+
+        if (result < 0) {
+          swaps++;
+          posMin = next;
+        }
+      }
+
+      E temp = data[fill];
+      data[fill] = data[posMin];
+      data[posMin] = temp;
+
+    }
+
   }
 
   @Override
@@ -65,8 +84,21 @@ public class SortableList<E> implements IList211<E>, ISortableList<E>{
   public void selectionSort(Comparator<E> compare) {
     swaps=0;
     comps=0;
-    //set swaps, comps to 0
-    
+   
+    for (int i = 0; i < data.length - 1; i++) {
+      E posMin = data[i];// guess smallest is at [i]
+
+      for (int j = i + 1; j < data.length; j++) {
+        comps++;
+        if (compare.compare(data[j], posMin) < 0) {
+          posMin = data[j];
+          swaps++;
+        }
+      }
+      E temp = posMin;
+      posMin = data[i];
+      data[i] = temp;
+    }
   }
 
   @Override
