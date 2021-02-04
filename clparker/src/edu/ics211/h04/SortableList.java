@@ -6,7 +6,7 @@ package edu.ics211.h04;
 import java.util.Arrays;
 import java.util.Comparator;
 
-import edu.ics211.h03.SortRecord;
+
 
 /**
  * @author Cory Parker
@@ -162,21 +162,22 @@ public class SortableList<E> implements IList211<E>, ISortableList<E>{
 
   @Override
   public void add(int index, E element) {
-    if (index < 0 || index > size) { // if index is bad, throw exception, but size is good.
+    if (index < 0 || index > size) { // if index is bad, throw exception
       throw new IndexOutOfBoundsException();
     }
     if (size == data.length) {// if data is full, grow
       data = Arrays.copyOf(data, 2 * data.length);//grow array *2 to be efficient
     }
-    for (int i=size-1 ;i<index ;i++) {//(loop size-1 to index) **** possible wrong
-      
+    
+    for (int i=size-1 ;i>index ;i--) {//(loop size-1 to index) *possible wrong
+      data[i+1]=data[i];// shift all items from index to index+1 *may not work
     }
   
+   // for (int i=index ;i<size ;i++)
+        //data[i+1]=data[i]
     
-        
-    // shift all items from index to index+1 (loop size-1 to index)
-    //insert element into array at index
-    size++;//increment size
+   data[index]= element;//insert element into array at index
+   size++;//increment size
   }
 
   @Override
@@ -184,7 +185,10 @@ public class SortableList<E> implements IList211<E>, ISortableList<E>{
     checkIndex(index);
     E temp = data[index];//remember item at index
     
-    //shift items from index +1 to size of index
+   
+    for (int i=index;i<size-1;i++) { //shift items from index +1 to size of index *may be wrong
+      data[index]=data[index+1];//*may be wrong way
+    }
     
     
     size= size-1;//decrement size

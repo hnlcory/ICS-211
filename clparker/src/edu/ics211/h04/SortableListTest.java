@@ -2,7 +2,7 @@ package edu.ics211.h04;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;//changed this?
+import static org.junit.Assert.fail;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,6 +14,11 @@ import org.junit.jupiter.api.Test;
  */
 class SortableListTest {
 
+  /**
+   * Sets up tests.
+   * @throws Exception if there is a problem.
+   */
+  
   @BeforeEach
   void setUp() throws Exception {
   }
@@ -25,21 +30,23 @@ class SortableListTest {
     SortableList<Integer> list = new SortableList<Integer>();
     assertNotNull(list);
     assertEquals(0, list.size());
-    fail("Not yet implemented");
   }
 
 
   @Test
   void testInsertionSort() {
-    //cretae sortable list integre
-    //list .add 6
-    //list .add 3
-    //list .add 10
-    //list.insertionSort(new Integer Comparator());
-    //assertEquals(3, list.get(0))
-    //assertEquals(6, list.get(1))
-    //assertEquals(10, list.get(2))
-    fail("Not yet implemented");
+    SortableList<Integer> list = new SortableList<Integer>();
+    list.add(6);
+    list.add(3);
+    list.add(10);
+    
+    list.insertionSort(new IntegerComparator());
+    
+    
+    assertEquals(3, list.get(0));
+    assertEquals(6, list.get(1));
+    assertEquals(10, list.get(2));
+    
   }
 
 
