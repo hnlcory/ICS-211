@@ -30,7 +30,7 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
     // set swaps, comps to 0
     // Dont loop to data.length-1, loop from 1 to size-1(nothing at size, we start at 0)
     // dont have to pull data from sort record?
-
+    long startTime = System.nanoTime();
     int n = data.length;
     for (int fill = 0; fill < n - 1; fill++) {
       int posMin = fill;
@@ -49,7 +49,8 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
       data[posMin] = temp;// *
 
     }
-
+    long endTime = System.nanoTime(); // get ending time from nanoTime
+    this.sortTime = endTime - startTime;// subtract ending from starting to stortTime
   }
 
 
@@ -57,6 +58,7 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
   public void bubbleSort(Comparator<E> compare) {
     swaps = 0;
     comps = 0;
+    long startTime = System.nanoTime();
     boolean exchange = false;
     int pass = 0;
 
@@ -78,6 +80,8 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
       }
       pass++;
     } while (exchange);
+    long endTime = System.nanoTime(); // get ending time from nanoTime
+    this.sortTime = endTime - startTime;// subtract ending from starting to stortTime
   }
 
 
@@ -85,6 +89,7 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
   public void selectionSort(Comparator<E> compare) {
     swaps = 0;
     comps = 0;
+    long startTime = System.nanoTime();
 
     for (int i = 0; i < data.length - 1; i++) {
       E posMin = data[i];// guess smallest is at [i]
@@ -100,6 +105,8 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
       posMin = data[i];
       data[i] = temp;
     }
+    long endTime = System.nanoTime(); // get ending time from nanoTime
+    this.sortTime = endTime - startTime;// subtract ending from starting to stortTime
   }
 
 
