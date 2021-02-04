@@ -206,14 +206,38 @@ class SortableListTest {
 
 
   @Test
-  void testAddIntE() {
-    fail("Not yet implemented");
+  void testAddIntE() {//Adds element to the list at the given index 
+    SortableList<Integer> list = new SortableList<Integer>();//create list
+    list.add(3);//add some items
+    list.add(12);
+    
+    list.add(1, 6);
+    list.add(3,15);
+    
+    assertEquals(sortedList.get(1), list.get(1));
+    assertEquals(sortedList.get(3), list.get(3));
+    
+    try {
+    list.add(-1, 25);
+    }
+    catch (IndexOutOfBoundsException IOOBE) {
+    }
   }
 
 
   @Test
-  void testRemove() {
-    fail("Not yet implemented");
+  void testRemove() {//Removes the element at the given index.
+    SortableList<Integer> list = new SortableList<Integer>();//create list
+    list.add(3);//add some items
+    list.add(6);
+    list.add(12);
+    list.add(10);
+    list.add(15); 
+    
+    list.remove(2);
+    assertEquals(list.get(2), sortedList.get(2));
+    
+    
   }
 
 }
