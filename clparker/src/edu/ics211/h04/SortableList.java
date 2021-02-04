@@ -206,17 +206,12 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
   @Override
   public E remove(int index) {
     checkIndex(index);
-    E temp = data[index];// remember item at index
-
-    
+    E temp = data[index];// remember item at index    
     
     for (int i = index; i < size - 1; i++) { // shift items from index +1 to size of index *may be wrong
       data[index] = data[index + 1];// *may be wrong way
     }
 
-    
-    
-    
     size = size - 1;// decrement size
     return temp;// return remembered
 

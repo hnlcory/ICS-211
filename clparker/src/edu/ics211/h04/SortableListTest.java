@@ -212,7 +212,13 @@ class SortableListTest {
     list.add(12);
     
     list.add(1, 6);
+    
     list.add(3,15);
+    list.add(3,15);
+    //list.add(3,15);
+   
+   
+    
     
     assertEquals(sortedList.get(1), list.get(1));
     assertEquals(sortedList.get(3), list.get(3));
