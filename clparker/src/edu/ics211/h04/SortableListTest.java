@@ -237,6 +237,15 @@ class SortableListTest {
     list.remove(2);
     assertEquals(list.get(2), sortedList.get(2));
     
+    try {
+      list.remove(-1);
+      }
+      catch (IndexOutOfBoundsException IOOBE) {
+      }  
+    list.remove(0);
+    list.remove(0);
+    list.remove(0);
+    list.remove(0);
     
   }
 
