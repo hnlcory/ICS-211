@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
  *
  */
 class SortableListTest {
+  SortableList<Integer> sortedList = new SortableList<Integer>();
+  
 
   /**
    * Sets up tests.
@@ -21,6 +23,10 @@ class SortableListTest {
   
   @BeforeEach
   void setUp() throws Exception {
+    sortedList.add(3);
+    sortedList.add(5);
+    sortedList.add(10);
+    sortedList.add(15);
   }
 
 
@@ -38,27 +44,52 @@ class SortableListTest {
     SortableList<Integer> list = new SortableList<Integer>();
     list.add(6);
     list.add(3);
+    list.add(15);
     list.add(10);
     
     list.insertionSort(new IntegerComparator());
     
     
-    assertEquals(3, list.get(0));
-    assertEquals(6, list.get(1));
-    assertEquals(10, list.get(2));
+    assertEquals(sortedList.get(0), list.get(0));
+    assertEquals(sortedList.get(1), list.get(1));
+    assertEquals(sortedList.get(2), list.get(2));
+    assertEquals(sortedList.get(3), list.get(3));
     
   }
 
 
   @Test
   void testBubbleSort() {
-    fail("Not yet implemented");
+    SortableList<Integer> list = new SortableList<Integer>();
+    list.add(6);
+    list.add(3);
+    list.add(15);
+    list.add(10);
+    
+    list.bubbleSort(new IntegerComparator());
+    
+    assertEquals(sortedList.get(0), list.get(0));
+    assertEquals(sortedList.get(1), list.get(1));
+    assertEquals(sortedList.get(2), list.get(2));
+    assertEquals(sortedList.get(3), list.get(3));
+   
   }
 
 
   @Test
   void testSelectionSort() {
-    fail("Not yet implemented");
+    SortableList<Integer> list = new SortableList<Integer>();
+    list.add(6);
+    list.add(3);
+    list.add(15);
+    list.add(10);
+    
+    list.selectionSort(new IntegerComparator());
+    
+    assertEquals(sortedList.get(0), list.get(0));
+    assertEquals(sortedList.get(1), list.get(1));
+    assertEquals(sortedList.get(2), list.get(2));
+    assertEquals(sortedList.get(3), list.get(3));
   }
 
 
