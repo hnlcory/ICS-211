@@ -187,7 +187,7 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
     
     
     
-    for (int i = size - 1; i > index; i--) {// (loop size-1 to index) *possible wrong
+    for (int i = size - 1; i > index; i++) {// (loop size-1 to index) *possible wrong
       data[i + 1] = data[i];// shift all items from index to index+1 *may not work
     }
 
