@@ -166,8 +166,8 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
 
 
   @Override
-  public int indexOf(Object obj) {// ***may need to change to E type
-    for (int i = 0; i < size - 1; i++) {// loop 0 to size -1 *** may be weird bc i=0
+  public int indexOf(Object obj) {
+    for (int i = 0; i <= size - 1; i++) {// loop 0 to size -1 
       if (obj.equals(data[i])) {// if obj.equals(item at index)
         return i; // return index
       }
@@ -201,7 +201,7 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
     
     
     
-    for (int i = size - 2; i > index; i++) {// (loop size-1 to index) *possible wrong
+    for (int i = size - 1; i > index; i--) {// (loop to index) *possible wrong
       data[i + 1] = data[i];// shift all items from index to index+1 *may not work
     }
 

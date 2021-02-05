@@ -37,7 +37,7 @@ public class SortedCloudList implements IList211<Cloud> {
   }
 
   @Override
-  public int indexOf(Object obj) {
+  public int indexOf(Object obj) {//*
     return list.indexOf(obj);
   }
 
@@ -54,8 +54,9 @@ public class SortedCloudList implements IList211<Cloud> {
   }
 
   @Override
-  public void add(int index, Cloud element) {
+  public void add(int index, Cloud element) {//*
     list.add(index, element);
+    list.bubbleSort(comp);
     
   }
 
