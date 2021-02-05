@@ -108,7 +108,7 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
           break;
         }
         comps++;
-        //System.out.println(data[j]+" "+posMin);
+        
         if (compare.compare(data[j], data[posMin]) < 0) {
          posMin = j;
           swaps++;
@@ -118,7 +118,7 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
       data[posMin] = data[i];
       data[i] = temp;
     }
-    //System.out.println("final array "+Arrays.toString(data));
+    
     long endTime = System.nanoTime(); // get ending time from nanoTime
     this.sortTime = endTime - startTime;// subtract ending from starting to stortTime
   }

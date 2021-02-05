@@ -94,20 +94,52 @@ class SortableListTest {
 
 
   @Test
-  void testGetNumberOfSwaps() {
-    fail("Not yet implemented");
+  void testGetNumberOfSwaps() {//Returns the number of swaps for the last sort.
+    SortableList<Integer> list = new SortableList<Integer>();
+    list.add(6);
+    list.add(3);
+    list.add(15);
+    list.add(10);
+    
+    list.bubbleSort(new IntegerComparator());
+     
+    assertEquals(list.getNumberOfSwaps(), 2);
+    
+    
   }
 
 
   @Test
-  void testGetNumberOfComparisons() {
-    fail("Not yet implemented");
+  void testGetNumberOfComparisons() {//Returns the number of comparisons for the last sort
+    SortableList<Integer> list = new SortableList<Integer>();
+    list.add(6);
+    list.add(3);
+    list.add(15);
+    list.add(10);
+    
+    list.bubbleSort(new IntegerComparator());
+    
+    assertEquals(list.getNumberOfComparisons(), 6);
   }
 
 
   @Test
-  void testGetSortTime() {
-    fail("Not yet implemented");
+  void testGetSortTime() {//Returns the time it took to sort the list.
+    SortableList<Integer> list = new SortableList<Integer>();
+    double time =2600.0;
+    list.add(6);
+    list.add(3);
+    list.add(15);
+    list.add(10);
+    
+    list.bubbleSort(new IntegerComparator());
+  
+    if  (list.getSortTime()>0) {
+      
+    }
+    else {
+      throw new IndexOutOfBoundsException();
+    }
   }
 
 
