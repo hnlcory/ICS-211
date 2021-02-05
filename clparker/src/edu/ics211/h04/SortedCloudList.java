@@ -13,7 +13,7 @@ import java.util.Comparator;
 public class SortedCloudList implements IList211<Cloud> {
   private SortableList<Cloud> list;
   private Comparator<Cloud> comp;
-  
+
   /**
    * 
    */
@@ -24,41 +24,48 @@ public class SortedCloudList implements IList211<Cloud> {
     // TODO Auto-generated constructor stub
   }
 
+
   @Override
   public Cloud get(int index) {
     return list.get(index);
   }
 
+
   @Override
-  public Cloud set(int index, Cloud element) {  
-    Cloud temp =list.set(index, element);// remmeber cloud 
+  public Cloud set(int index, Cloud element) {
+    Cloud temp = list.set(index, element);// remmeber cloud
     list.bubbleSort(this.comp);
     return temp;
   }
 
+
   @Override
-  public int indexOf(Object obj) {//*
+  public int indexOf(Object obj) {// *
     return list.indexOf(obj);
   }
+
 
   @Override
   public int size() {
     return list.size();
   }
 
-  @Override
-  public boolean add(Cloud e) {
-    boolean temp = list.add(e);//remember list.add(e);
-    list.bubbleSort(this.comp); //sort list
-    return temp;//return memory
-  }
 
   @Override
-  public void add(int index, Cloud element) {//*
+  public boolean add(Cloud e) {
+    boolean temp = list.add(e);// remember list.add(e);
+    list.bubbleSort(this.comp); // sort list
+    return temp;// return memory
+  }
+
+
+  @Override
+  public void add(int index, Cloud element) {// *
     list.add(index, element);
     list.bubbleSort(comp);
-    
+
   }
+
 
   @Override
   public Cloud remove(int index) {

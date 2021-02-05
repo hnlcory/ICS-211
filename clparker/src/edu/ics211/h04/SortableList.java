@@ -1,14 +1,17 @@
 /**
- * 
+ * Creates a Sortable List.
+ * @author Cory Parker.
  */
+
 package edu.ics211.h04;
 
 import java.util.Arrays;
 import java.util.Comparator;
 
 /**
- * @author Cory Parker
- *
+ * Creates a list sortable by several sorts.
+ * @param <E> generic type.
+ * @author Cory Parker.
  */
 public class SortableList<E> implements IList211<E>, ISortableList<E> {
   private E[] data;
@@ -28,18 +31,16 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
     swaps = 0;
     comps = 0;
     // set swaps, comps to 0
-    // Dont loop to data.length-1, loop from 1 to size-1(nothing at size, we start at 0)
-    // dont have to pull data from sort record?
     long startTime = System.nanoTime();
     int n = data.length;
     for (int fill = 0; fill < n - 1; fill++) {
       int posMin = fill;
       for (int next = fill + 1; next < n; next++) {
-        if(data[next]==null) {
+        if (data[next] == null) {
           break;
         }
         comps++;
-        
+
         int result = compare.compare(data[next], data[posMin]);// *
 
         if (result < 0) {
@@ -67,10 +68,10 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
     int pass = 0;
 
     do { // do while loop
-      exchange = false; // set we havent changed
+      exchange = false; // set changed
       for (int i = 1; i < data.length - pass; i++) {
-        
-        if(data[i]==null) {
+
+        if (data[i] == null) {
           break;
         }
         comps++;// count compare
@@ -100,17 +101,16 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
 
     for (int i = 0; i < data.length - 1; i++) {
       int posMin = i;// guess smallest is at [i]
-      
-     
+
       for (int j = i + 1; j < data.length; j++) {
-        
-        if(data[j]==null) {
+
+        if (data[j] == null) {
           break;
         }
         comps++;
-        
+
         if (compare.compare(data[j], data[posMin]) < 0) {
-         posMin = j;
+          posMin = j;
           swaps++;
         }
       }
@@ -118,7 +118,7 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
       data[posMin] = data[i];
       data[i] = temp;
     }
-    
+
     long endTime = System.nanoTime(); // get ending time from nanoTime
     this.sortTime = endTime - startTime;// subtract ending from starting to stortTime
   }
@@ -159,7 +159,7 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
   @Override
   public E set(int index, E element) {
     checkIndex(index);
-    E temp = data[index]; // remmeber value @ index
+    E temp = data[index]; // remember value @ index
     data[index] = element;// set value at index to element
     return temp;// return remembered
   }
@@ -167,7 +167,7 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
 
   @Override
   public int indexOf(Object obj) {
-    for (int i = 0; i <= size - 1; i++) {// loop 0 to size -1 
+    for (int i = 0; i <= size - 1; i++) {// loop 0 to size -1
       if (obj.equals(data[i])) {// if obj.equals(item at index)
         return i; // return index
       }
@@ -198,20 +198,13 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
       data = Arrays.copyOf(data, 2 * data.length);// grow array *2 to be efficient
     }
 
-    
-    
-    
-    for (int i = size - 1; i > index; i--) {// (loop to index) *possible wrong
-      data[i + 1] = data[i];// shift all items from index to index+1 *may not work
+    for (int i = size - 1; i > index; i--) {// (loop to index)
+      data[i + 1] = data[i];// shift all items from index to index+1
     }
 
     // for (int i=index ;i<size ;i++)
     // data[i+1]=data[i]
 
-    
-    
-    
-    
     data[index] = element;// insert element into array at index
     size++;// increment size
   }
@@ -220,8 +213,8 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
   @Override
   public E remove(int index) {
     checkIndex(index);
-    E temp = data[index];// remember item at index    
-    
+    E temp = data[index];// remember item at index
+
     for (int i = index; i < size - 1; i++) { // shift items from index +1 to size of index *may be wrong
       data[index] = data[index + 1];// *may be wrong way
     }
