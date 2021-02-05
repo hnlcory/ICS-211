@@ -215,7 +215,7 @@ class SortableListTest {
     
     list.add(3,15);
     list.add(3,15);
-    //list.add(3,15);
+    list.add(3,15);
    
    
     

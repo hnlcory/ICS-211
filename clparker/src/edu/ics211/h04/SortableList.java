@@ -35,7 +35,11 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
     for (int fill = 0; fill < n - 1; fill++) {
       int posMin = fill;
       for (int next = fill + 1; next < n; next++) {
+        if(data[next]==null) {
+          break;
+        }
         comps++;
+        
         int result = compare.compare(data[next], data[posMin]);// *
 
         if (result < 0) {
@@ -65,7 +69,10 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
     do { // do while loop
       exchange = false; // set we havent changed
       for (int i = 1; i < data.length - pass; i++) {
-
+        
+        if(data[i]==null) {
+          break;
+        }
         comps++;// count compare
 
         int result = compare.compare(data[i], data[i - 1]);
@@ -92,19 +99,26 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
     long startTime = System.nanoTime();
 
     for (int i = 0; i < data.length - 1; i++) {
-      E posMin = data[i];// guess smallest is at [i]
-
+      int posMin = i;// guess smallest is at [i]
+      
+     
       for (int j = i + 1; j < data.length; j++) {
+        
+        if(data[j]==null) {
+          break;
+        }
         comps++;
-        if (compare.compare(data[j], posMin) < 0) {
-          posMin = data[j];
+        //System.out.println(data[j]+" "+posMin);
+        if (compare.compare(data[j], data[posMin]) < 0) {
+         posMin = j;
           swaps++;
         }
       }
-      E temp = posMin;
-      posMin = data[i];
+      E temp = data[posMin];
+      data[posMin] = data[i];
       data[i] = temp;
     }
+    //System.out.println("final array "+Arrays.toString(data));
     long endTime = System.nanoTime(); // get ending time from nanoTime
     this.sortTime = endTime - startTime;// subtract ending from starting to stortTime
   }
@@ -187,7 +201,7 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
     
     
     
-    for (int i = size - 1; i > index; i++) {// (loop size-1 to index) *possible wrong
+    for (int i = size - 2; i > index; i++) {// (loop size-1 to index) *possible wrong
       data[i + 1] = data[i];// shift all items from index to index+1 *may not work
     }
 
