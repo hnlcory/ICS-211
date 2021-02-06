@@ -8,7 +8,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * 
+ * Tests to check for working methods.
+ * Tests use sortedList to check for a proper sorted data set.
+ * Try Catch Blocks to test bad values.
  * @author Cory Parker
  *
  */
@@ -48,7 +50,7 @@ class SortableListTest {
     list.add(10);
 
     list.insertionSort(new IntegerComparator());
-
+    //check against properly sorted list
     assertEquals(sortedList.get(0), list.get(0));
     assertEquals(sortedList.get(1), list.get(1));
     assertEquals(sortedList.get(2), list.get(2));
@@ -66,7 +68,7 @@ class SortableListTest {
     list.add(10);
 
     list.bubbleSort(new IntegerComparator());
-
+    //check against properly sorted list
     assertEquals(sortedList.get(0), list.get(0));
     assertEquals(sortedList.get(1), list.get(1));
     assertEquals(sortedList.get(2), list.get(2));
@@ -84,7 +86,7 @@ class SortableListTest {
     list.add(10);
 
     list.selectionSort(new IntegerComparator());
-
+    //check against properly sorted list
     assertEquals(sortedList.get(0), list.get(0));
     assertEquals(sortedList.get(1), list.get(1));
     assertEquals(sortedList.get(2), list.get(2));
@@ -93,7 +95,7 @@ class SortableListTest {
 
 
   @Test
-  void testGetNumberOfSwaps() {// Returns the number of swaps for the last sort.
+  void testGetNumberOfSwaps() {
     SortableList<Integer> list = new SortableList<Integer>();
     list.add(6);
     list.add(3);
@@ -101,14 +103,14 @@ class SortableListTest {
     list.add(10);
 
     list.bubbleSort(new IntegerComparator());
-
+    //should take bubble 2 sorts to complete
     assertEquals(list.getNumberOfSwaps(), 2);
 
   }
 
 
   @Test
-  void testGetNumberOfComparisons() {// Returns the number of comparisons for the last sort
+  void testGetNumberOfComparisons() {
     SortableList<Integer> list = new SortableList<Integer>();
     list.add(6);
     list.add(3);
@@ -116,24 +118,23 @@ class SortableListTest {
     list.add(10);
 
     list.bubbleSort(new IntegerComparator());
-
+    //should take bubble 6 comparisons.
     assertEquals(list.getNumberOfComparisons(), 6);
   }
 
 
   @Test
-  void testGetSortTime() {// Returns the time it took to sort the list.
+  void testGetSortTime() {
     SortableList<Integer> list = new SortableList<Integer>();
-    double time = 2600.0;
     list.add(6);
     list.add(3);
     list.add(15);
     list.add(10);
 
     list.bubbleSort(new IntegerComparator());
-
+    //if sort doesn't take actual time, throw exception
     if (list.getSortTime() > 0) {
-
+      assert true;
     } else {
       throw new IndexOutOfBoundsException();
     }
@@ -158,6 +159,7 @@ class SortableListTest {
       list.get(list.size());
       fail("should throw IOOBE exception");
     } catch (IndexOutOfBoundsException ioobe) {
+      assert true;
     }
   }
 
@@ -181,12 +183,13 @@ class SortableListTest {
       list.set(-1, 5);
       list.set(list.size(), 7);
     } catch (IndexOutOfBoundsException ioobe) {
+      assert true;
     }
   }
 
 
   @Test
-  void testIndexOf() {// retuns size of list
+  void testIndexOf() {
     SortableList<Integer> list = new SortableList<Integer>();// create list
     list.add(3);// add some items
     list.add(6);
@@ -202,7 +205,7 @@ class SortableListTest {
 
 
   @Test
-  void testSize() {// returns the size of list
+  void testSize() {
     SortableList<Integer> list = new SortableList<Integer>();// create list
     list.add(3);// add some items
     list.add(6);
@@ -214,15 +217,15 @@ class SortableListTest {
     list.add(13);
     try {
       assertEquals(list.size(), sortedList.size());// should fail
-    } catch (AssertionError AE) {
-
+    } catch (AssertionError ae) {
+      assert true;
     }
 
   }
 
 
   @Test
-  void testAddE() {// Adds e to the end of the list.
+  void testAddE() {
     SortableList<Integer> list = new SortableList<Integer>();
     list.add(3);
     list.add(6);
@@ -232,29 +235,30 @@ class SortableListTest {
 
 
   @Test
-  void testAddIntE() {// Adds element to the list at the given index
+  void testAddIntE() {
     SortableList<Integer> list = new SortableList<Integer>();// create list
     list.add(3);// add some items
     list.add(12);
 
     list.add(1, 6);
-
+    //test array growth
     list.add(3, 15);
     list.add(3, 15);
     list.add(3, 15);
 
     assertEquals(sortedList.get(1), list.get(1));
     assertEquals(sortedList.get(3), list.get(3));
-
+    //bad index
     try {
       list.add(-1, 25);
-    } catch (IndexOutOfBoundsException IOOBE) {
+    } catch (IndexOutOfBoundsException ioobe) {
+      assert true;
     }
   }
 
 
   @Test
-  void testRemove() {// Removes the element at the given index.
+  void testRemove() {
     SortableList<Integer> list = new SortableList<Integer>();// create list
     list.add(3);// add some items
     list.add(6);
@@ -264,10 +268,11 @@ class SortableListTest {
 
     list.remove(2);
     assertEquals(list.get(2), sortedList.get(2));
-
+    //bad index
     try {
       list.remove(-1);
-    } catch (IndexOutOfBoundsException IOOBE) {
+    } catch (IndexOutOfBoundsException ioobe) {
+      assert true;
     }
     list.remove(0);
     list.remove(0);

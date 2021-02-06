@@ -1,17 +1,16 @@
 package edu.ics211.h04;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.lang.reflect.Array;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.fail;
 
 import edu.ics211.h02.AltitudeComparator;
 import edu.ics211.h02.Cloud;
 import edu.ics211.h02.CloudShape;
 import edu.ics211.h02.MotherNature;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class SortedCloudListTest {
   private MotherNature mother;
@@ -101,7 +100,7 @@ class SortedCloudListTest {
     // try some good values
     assertTrue("Got wrong index", list.indexOf(inorder[0]) == 0);
     assertTrue("Got wrong index", list.indexOf(inorder[2]) == 1);
-    assertTrue("Got wrong index", list.indexOf(inorder[4]) == 2);//here
+    assertTrue("Got wrong index", list.indexOf(inorder[4]) == 2);
     // try a cloud not in the list
     assertTrue("Got wrong index", list.indexOf(inorder[1]) == -1);
   }
@@ -148,7 +147,7 @@ class SortedCloudListTest {
     assertEquals(inorder[4], list.get(0));
     list.add(1, inorder[2]);
     assertEquals(2, list.size());
-    assertEquals(inorder[2], list.get(0));//here
+    assertEquals(inorder[2], list.get(0));
     assertEquals(inorder[4], list.get(1));
     list.add(2, inorder[0]);
     assertEquals(3, list.size());

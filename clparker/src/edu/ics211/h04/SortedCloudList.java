@@ -1,21 +1,26 @@
 /**
- * 
+ * List for sorting clouds when added or removed.
+ * @author Cory Parker. 
  */
+
 package edu.ics211.h04;
 
 import edu.ics211.h02.Cloud;
 import java.util.Comparator;
 
 /**
- * @author Cory Parker
- *
+ * A list that constantly sorts clouds when added.
+ * 
+ * @author Cory Parker.
  */
 public class SortedCloudList implements IList211<Cloud> {
   private SortableList<Cloud> list;
   private Comparator<Cloud> comp;
 
   /**
-   * 
+   * Creates the new sorted cloud list.
+   * @author Cory Parker.
+   * @param comp cloud comparator.
    */
   public SortedCloudList(Comparator<Cloud> comp) {
     super();
@@ -40,7 +45,7 @@ public class SortedCloudList implements IList211<Cloud> {
 
 
   @Override
-  public int indexOf(Object obj) {// *
+  public int indexOf(Object obj) {
     return list.indexOf(obj);
   }
 
@@ -60,7 +65,7 @@ public class SortedCloudList implements IList211<Cloud> {
 
 
   @Override
-  public void add(int index, Cloud element) {// *
+  public void add(int index, Cloud element) {
     list.add(index, element);
     list.bubbleSort(comp);
 

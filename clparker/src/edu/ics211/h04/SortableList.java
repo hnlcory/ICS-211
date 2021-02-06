@@ -10,6 +10,7 @@ import java.util.Comparator;
 
 /**
  * Creates a list sortable by several sorts.
+ * 
  * @param <E> generic type.
  * @author Cory Parker.
  */
@@ -20,6 +21,11 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
   private int comps;
   private double sortTime;
 
+  /**
+   * Creates Array for sorting.
+   * 
+   * @author Cory Parker.
+   */
   public SortableList() {
     // init member variable
     this.data = (E[]) new Object[13];
@@ -167,8 +173,8 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
 
   @Override
   public int indexOf(Object obj) {
-    for (int i = 0; i <= size - 1; i++) {// loop 0 to size -1
-      if (obj.equals(data[i])) {// if obj.equals(item at index)
+    for (int i = 0; i <= size - 1; i++) {
+      if (obj.equals(data[i])) {
         return i; // return index
       }
     }
@@ -194,11 +200,11 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
     if (index < 0 || index > size) { // if index is bad, throw exception
       throw new IndexOutOfBoundsException();
     }
-    if (size == data.length) {// if data is full, grow
+    if (size == data.length) {
       data = Arrays.copyOf(data, 2 * data.length);// grow array *2 to be efficient
     }
 
-    for (int i = size - 1; i > index; i--) {// (loop to index)
+    for (int i = size - 1; i > index; i--) {
       data[i + 1] = data[i];// shift all items from index to index+1
     }
 
@@ -215,7 +221,7 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
     checkIndex(index);
     E temp = data[index];// remember item at index
 
-    for (int i = index; i < size - 1; i++) { // shift items from index +1 to size of index *may be wrong
+    for (int i = index; i < size - 1; i++) { // shift items from index +1 to size of index
       data[index] = data[index + 1];// *may be wrong way
     }
 
