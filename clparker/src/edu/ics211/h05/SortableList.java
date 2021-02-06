@@ -11,8 +11,26 @@ import java.util.Comparator;
  * @author hnlcory
  *
  */
-public class SortableList implements IList211, ISortableList{
-
+public class SortableList<E> implements IList211<E>, ISortableList<E>{
+  private DLinkedNode tail;
+  private int size;
+  private int swaps;
+  private int comps;
+  private double sortTime;
+  
+  
+  private class DLinkedNode {
+    E item;
+    DLinkedNode next;
+    DLinkedNode prev;
+    
+    public DLinkedNode(E item, DLinkedNode next, DLinkedNode prev) {
+      this.item = item;
+      this.next = next;
+      this.prev = prev;
+    }
+  }
+  
   @Override
   public void insertionSort(Comparator compare) {
     // TODO Auto-generated method stub
@@ -33,24 +51,21 @@ public class SortableList implements IList211, ISortableList{
 
   @Override
   public int getNumberOfSwaps() {
-    // TODO Auto-generated method stub
-    return 0;
+    return swaps;
   }
 
   @Override
   public int getNumberOfComparisons() {
-    // TODO Auto-generated method stub
-    return 0;
+    return comps;
   }
 
   @Override
   public double getSortTime() {
-    // TODO Auto-generated method stub
-    return 0;
+    return sortTime;
   }
 
   @Override
-  public Object get(int index) {
+  public E get(int index) {
     // TODO Auto-generated method stub
     return null;
   }
@@ -69,14 +84,12 @@ public class SortableList implements IList211, ISortableList{
 
   @Override
   public int size() {
-    // TODO Auto-generated method stub
-    return 0;
+    return size;
   }
 
   @Override
-  public boolean add(Object e) {
-    // TODO Auto-generated method stub
-    return false;
+  public boolean add(E e) {
+   return false;
   }
 
   @Override
@@ -86,7 +99,7 @@ public class SortableList implements IList211, ISortableList{
   }
 
   @Override
-  public Object remove(int index) {
+  public E remove(int index) {
     // TODO Auto-generated method stub
     return null;
   }
