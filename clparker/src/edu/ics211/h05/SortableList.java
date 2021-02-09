@@ -143,20 +143,35 @@ public class SortableList<E> implements IList211<E>, ISortableList<E>{
 
   @Override
   public E get(int index) {
-    // TODO Auto-generated method stub
+    checkIndex(index);
+    
+    //start at head 
+    //move index steps
+    //return data of node
     return null;
+  }
+  
+  private void checkIndex(int index) {
+    if (index < 0 || index >= size) {
+      throw new IndexOutOfBoundsException();
+    }
   }
 
   @Override
   public E set(int index, E element) {
-    // TODO Auto-generated method stub
-    return null;
+    E temp = get(index); // remember value @ index
+    set(index, element);// set value at index to element
+    return temp;// return remembered
   }
 
   @Override
   public int indexOf(Object obj) {
-    // TODO Auto-generated method stub
-    return 0;
+    for (int i = 0; i <= size - 1; i++) {
+      if (obj.equals(get(i))) {
+        return i; // return index
+      }
+    }
+    return -1;// not found
   }
 
   @Override
@@ -165,18 +180,19 @@ public class SortableList<E> implements IList211<E>, ISortableList<E>{
   }
 
   @Override
-  public boolean add(E e) {
-   return false;
+  public boolean add(E e) {// Adds e to the end of the list.
+    add(size,e);
+    return true;
   }
 
   @Override
-  public void add(int index, E element) {
+  public void add(int index, E element) {// Adds element to the list at the given index.
     // TODO Auto-generated method stub
     
   }
 
   @Override
-  public E remove(int index) {
+  public E remove(int index) {//  Removes the element at the given index.
     // TODO Auto-generated method stub
     return null;
   }
