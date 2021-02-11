@@ -31,6 +31,16 @@ public class SortableList<E> implements IList211<E>, ISortableList<E>{
     }
   }
   
+  public SortableList() {
+    //init variables
+    tail=null;
+    size=0;
+    swaps=0;
+    comps=0;
+    sortTime=0;
+    
+  }
+  
   @Override
   public void insertionSort(Comparator<E> compare) {// *** all former data.lengths may be wrong
     swaps = 0;
@@ -144,11 +154,15 @@ public class SortableList<E> implements IList211<E>, ISortableList<E>{
   @Override
   public E get(int index) {
     checkIndex(index);
-    
-    //start at head 
-    //move index steps
-    //return data of node
-    return null;
+    DLinkedNode temp = tail;
+    for (int i = size-1; i>=index;i++) {//may be > not >=
+       temp=temp.next;
+    }
+    //return DLinkedNode.item;
+    return temp.item;
+    //traverse to index form tail (tail = size-1)
+    //return node.item
+   
   }
   
   private void checkIndex(int index) {
@@ -159,19 +173,30 @@ public class SortableList<E> implements IList211<E>, ISortableList<E>{
 
   @Override
   public E set(int index, E element) {
-    E temp = get(index); // remember value @ index
-    set(index, element);// set value at index to element
-    return temp;// return remembered
+    checkIndex(index);
+    DLinkedNode temp = tail;
+    for (int i = size-1; i>=index;i++) {//may be > not >=
+     temp = temp.next;
+    }
+    E data = temp.item;
+    temp.item= element;
+    return data;
+    //check index
+    //traverse from index to tail
+    //remmebr item in node
+    //set item in node to element
+    //return remembered
   }
 
   @Override
   public int indexOf(Object obj) {
-    for (int i = 0; i <= size - 1; i++) {
-      if (obj.equals(get(i))) {
-        return i; // return index
-      }
-    }
-    return -1;// not found
+    //keep track of index
+    //loop from tail to beginning
+    //  if note.item.equals(obj), return index
+    //  update index
+    //  update node
+    //return -1
+   return 0;
   }
 
   @Override
@@ -187,13 +212,43 @@ public class SortableList<E> implements IList211<E>, ISortableList<E>{
 
   @Override
   public void add(int index, E element) {// Adds element to the list at the given index.
-    // TODO Auto-generated method stub
+   // if index is bad, size is ok throw index out of bounds
+   // if size is 0, point to new node (element,null,null)
+    //else if index is side, adding to the end
+   //if index is size
+   // create new DLinkedNode with element, null, tail
+    //if tail is not null
+    //tail.next = new node
+    //update tail to be new node
+   //else
+    //  traverse to index
+    //  create new node [element,temp, temp.prev] pointing new node to list
+    //  point list to new node
+    //  if temp.prev is not null
+    //    temp.prev.next = newNode
+    //  if temp.next is not null
+    //    temp.next.prev = newNode
+    //increment size
     
   }
 
   @Override
   public E remove(int index) {//  Removes the element at the given index.
-    // TODO Auto-generated method stub
+   //check index
+   //traverse to index
+   //if index is size -1
+   //   make the list not point to the node
+   //   if temp.prev is not null
+   //     temp.prev.next=temp.next 
+   //   update tail
+   //else
+   //   make the list not point to the node
+    //  if temp.prev is not null
+    //    temp.prev.next = temp.next
+    //  if temp.next is not null
+    //    temp.next.prev = temp.prev
+    //decrement size
+    // return ?
     return null;
   }
 
