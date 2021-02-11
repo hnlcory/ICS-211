@@ -164,7 +164,7 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
     for (int i = size - 1; i > index; i--) {// may be >= not >
       temp = temp.prev;
     }
-    // return DLinkedNode.item;
+    
     return temp.item;
     // traverse to index form tail (tail = size-1)
     // return node.item
@@ -245,8 +245,7 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
         tail.next = temp;// tail.next = new node
       }
     }
-    
-   
+
     else {
       DLinkedNode temp = tail;
      
@@ -257,9 +256,9 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
       temp.prev.next = e;
       e.next = temp;
       temp.next.prev=e;
-      size++;
       
     }
+    size++; 
     // if index is bad, size is ok throw index out of bounds
     // if size is 0, point to new node (element,null,null)
     // else if index is side, adding to the end
@@ -287,12 +286,31 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
   @Override
   public E remove(int index) {// Removes the element at the given index.
     checkIndex(index);
-    
+  
     DLinkedNode temp = tail;
     for (int i = size; i > index ; i--) {
       temp=temp.prev;
     }
     
+    if (index==size-1) {
+      //make the list not point to the node
+      //if temp.prev is not null
+         //temp.prev.next = temp.next
+      //update tail
+    }
+    else {
+      E removed = temp.prev.item;
+      temp.prev= temp.prev.prev;
+      
+      //  make list not point to the node
+      //  if temp.prev is not null
+      //     temp.prev.next = temp.next
+      //  if temp.next is not full
+      //     temp.next.prev = temp.prev
+      //decrement size
+      //return temp.item
+    }
+    size--;
     
     
     // check index
