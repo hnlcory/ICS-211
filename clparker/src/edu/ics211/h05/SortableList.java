@@ -158,11 +158,11 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
 
 
   @Override
-  public E get(int index) {
+  public E get(int index) {// Gets the item at the given index.
     checkIndex(index);
     DLinkedNode temp = tail;
-    for (int i = size - 1; i >= index; i++) {// may be > not >=
-      temp = temp.next;
+    for (int i = size - 1; i > index; i--) {// may be >= not >
+      temp = temp.prev;
     }
     // return DLinkedNode.item;
     return temp.item;
@@ -183,8 +183,8 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
   public E set(int index, E element) {
     checkIndex(index);
     DLinkedNode temp = tail;
-    for (int i = size - 1; i >= index; i++) {// may be > not >=
-      temp = temp.next;
+    for (int i = size - 1; i > index; i--) {// may be > not >=
+      temp = temp.prev;
     }
     E data = temp.item;
     temp.item = element;
@@ -200,7 +200,7 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
   @Override
   public int indexOf(Object obj) {
     DLinkedNode temp = tail;
-    for (int index = 0; index >= size; index++) {// again >= to > or possibly <
+    for (int index = 0; index >= size-1; index++) {// again >= to > or possibly <
       if (temp.item.equals(obj)) {
         return index;
       }
@@ -246,13 +246,19 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
       }
     }
     
-    //disaster from here
+   
     else {
       DLinkedNode temp = tail;
-      for (int i = 0; i < index - 1; i++) {
-        
-        DLinkedNode e = new DLinkedNode(element,temp,temp.prev);
+     
+      for (int i = size; i > index ; i--) {//index or index -1, this is where out thing needs to go
+        temp=temp.prev;
       }
+      DLinkedNode e = new DLinkedNode(element,temp,temp.prev);
+      temp.prev.next = e;
+      e.next = temp;
+      temp.next.prev=e;
+      size++;
+      
     }
     // if index is bad, size is ok throw index out of bounds
     // if size is 0, point to new node (element,null,null)
@@ -263,8 +269,11 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
     // tail.next = new node
     // update tail to be new node
     // else
+    
+    
     // traverse to index
     // create new node [element,temp, temp.prev] pointing new node to list
+    
     // point list to new node
     // if temp.prev is not null
     // temp.prev.next = newNode
@@ -277,6 +286,15 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
 
   @Override
   public E remove(int index) {// Removes the element at the given index.
+    checkIndex(index);
+    
+    DLinkedNode temp = tail;
+    for (int i = size; i > index ; i--) {
+      temp=temp.prev;
+    }
+    
+    
+    
     // check index
     // traverse to index
     // if index is size -1
