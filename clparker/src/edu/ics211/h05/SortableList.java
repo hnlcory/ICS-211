@@ -163,6 +163,7 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
     DLinkedNode temp = tail;
     for (int i = size - 1; i > index; i--) {// may be >= not >
       temp = temp.prev;
+      
     }
     
     return temp.item;
@@ -250,12 +251,15 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
       DLinkedNode temp = tail;
      
       for (int i = size; i > index ; i--) {//index or index -1, this is where out thing needs to go
+        
         temp=temp.prev;
+        System.out.println(temp.item);
       }
       DLinkedNode e = new DLinkedNode(element,temp,temp.prev);
       temp.prev.next = e;
       e.next = temp;
-      temp.next.prev=e;
+      e.prev=temp.prev;
+      temp.prev=e;
       
     }
     size++; 
@@ -288,19 +292,23 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
     checkIndex(index);
   
     DLinkedNode temp = tail;
-    for (int i = size; i > index ; i--) {
+    for (int i = size; i > index ; i--) {//1 behind
       temp=temp.prev;
     }
     
     if (index==size-1) {
+      if(temp.prev != null) {
+      temp.prev.next=temp.next;
+      }
       //make the list not point to the node
       //if temp.prev is not null
          //temp.prev.next = temp.next
       //update tail
     }
     else {
-      E removed = temp.prev.item;
-      temp.prev= temp.prev.prev;
+      E removed = temp.item;
+      temp.prev.next= temp.next;
+      temp.next.prev=temp.prev;
       
       //  make list not point to the node
       //  if temp.prev is not null
