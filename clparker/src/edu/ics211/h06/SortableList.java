@@ -14,15 +14,17 @@ import edu.ics211.h05.SortableList.DLinkedNode;
  */
 public class SortableList<E> implements IList211<E>, Iterable<E> {
   private DLinkedNode tail;
+  private int size;
   /**
    * 
    */
   public SortableList() {
-    // TODO Auto-generated constructor stub
+    tail =null;
+    size=0;
   }
 
   
-  public class DLinkedNode {
+  private class DLinkedNode {
     E item;
     DLinkedNode next;
     DLinkedNode prev;
@@ -57,10 +59,14 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
   
   @Override
   public Iterator<E> iterator() {
-    // TODO Auto-generated method stub
+    // copy paste 
     return null;
   }
 
+  public Iterator<E> iterator(Comparator<E> c){
+    //return new my....
+    return null;
+  }
 
   @Override
   public E get(int index) {
@@ -110,4 +116,74 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
     return null;
   }
 
+}
+
+private class MyListIterator implemnts ListIterator<E>{
+ //private dlinkednode nextNode;
+ // private int nextIndex;
+  
+ // public MyListIterator(){
+  //nextIndex=0
+  //nextNode = traverse[0];
+//}
+  
+  //has next{
+  //nextNode is not null
+  //}
+  
+  //E next(){
+  //if hasnext
+  //remmebr item at nextNode
+  //update nextnode
+  //update nextIndex
+  //return item
+  //if no next, throw nosuchelementexception
+  //}
+  
+  //hasprevious{
+  //if there is a prev of nextNode or nextNode is null
+  //}
+  
+  //E prevoius(){
+  //if hasPrevoius
+  //remembr item at nextNode.prev
+  //update nextNode
+  //update nextIndex
+  //return item
+  // else throw exception
+  //}
+  
+  //prevoiusindex{
+  //return nextIndex-1
+  //}
+  
+  
+  
+  
+//get set remove throws new unsupported 
+
+  
+  //private class MySortedIterator implements Iterator<E>{
+  //private sortablelist<E> sorted;
+  //private int nextIndex;
+  
+  //public MySortedIterator(Comparator<E> c){
+  //  init sorted
+  //  copy all items from this into sorted(for int i=0; i<size ; i++) sorted.add(get[i])
+  //  sort sorted (bubble sort)
+  //  nextIndex =0
+  //}
+  
+  //hasNext{
+  //return nextIndex< size
+  //}
+  
+  //E next(){
+  //if hasNext
+  //return sorted.get[nextIndex++]
+  //else throw exception
+  //}
+  
+  //}
+  
 }

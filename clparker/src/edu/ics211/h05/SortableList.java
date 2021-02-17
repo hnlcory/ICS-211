@@ -22,7 +22,7 @@ public class SortableList<E> implements IList211<E>, ISortableList<E> {
   private int comps;
   private double sortTime;
 
-  public class DLinkedNode {// changed from private to public, h06
+  private class DLinkedNode {// changed from private to public, h06
     E item;
     DLinkedNode next;
     DLinkedNode prev;
