@@ -4,6 +4,7 @@
 package edu.ics211.h06;
 
 import java.util.Iterator;
+import java.util.ListIterator;
 
 import edu.ics211.h04.IList211;
 import edu.ics211.h05.SortableList.DLinkedNode;
@@ -19,11 +20,139 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
    * 
    */
   public SortableList() {
-    tail =null;
+    tail=null;
     size=0;
   }
 
+  private void checkIndex(int index) {
+    if (index < 0 || index >= size) {
+      throw new IndexOutOfBoundsException();
+    }
+  }
   
+  @Override
+  public E get(int index) {
+    checkIndex(index);
+    DLinkedNode temp = tail;
+    for (int i = size - 1; i > index; i--) {
+      temp = temp.prev;
+
+    }
+    
+    return temp.item;
+    // traverse to index form tail (tail = size-1)
+    // return node.item
+
+  }
+
+
+  @Override
+  public E set(int index, E element) {
+    checkIndex(index);
+    DLinkedNode temp = tail;
+    for (int i = size - 1; i > index; i--) {
+      temp = temp.prev;
+    }
+    E data = temp.item;
+    temp.item = element;
+    return data;
+    // check index
+    // traverse from index to tail
+    // remmebr item in node
+    // set item in node to element
+    // return remembered
+  }
+
+
+  @Override
+  public int indexOf(Object obj) {
+    DLinkedNode temp = tail;
+    for (int index = size - 1; index >= 0; index--) {
+      if (temp.item.equals(obj)) {
+        return index;
+      }
+      temp = temp.prev;
+    }
+    return -1;
+  }
+
+
+  @Override
+  public int size() {
+    return size;
+  }
+
+
+  @Override
+  public boolean add(E e) {
+    add(size, e);
+    return true;
+  }
+
+
+  @Override
+  public void add(int index, E element) {
+    if (index < 0 || index > size) {
+      throw new IndexOutOfBoundsException();
+    }
+
+    if (size == 0) { // if size is 0, point to new node (element,null,null
+      tail = new DLinkedNode(element, null, null);
+    } else if (index == size) { // else if index is side, adding to the end
+      DLinkedNode temp = new DLinkedNode(element, null, tail);
+      if (tail != null) {
+        tail.next = temp;// tail.next = new node
+        tail = temp;
+      }
+    } else {
+      DLinkedNode temp = tail;
+
+      for (int i = size - 1; i > index; i--) {
+
+        temp = temp.prev;
+        System.out.println(temp.item);
+      }
+      DLinkedNode e = new DLinkedNode(element, temp, temp.prev);
+      if (temp.prev != null) {
+        temp.prev.next = e;
+      }
+      temp.prev = e;
+
+    }
+    size++;
+  }
+
+
+  @Override
+  public E remove(int index) {
+    checkIndex(index);
+
+    DLinkedNode temp = tail;
+    for (int i = size - 1; i > index; i--) {
+      temp = temp.prev;
+    }
+
+    if (index == size - 1) {
+      if (temp.prev != null) {
+        temp.prev.next = temp.next;
+      }
+      // make the list not point to the node
+      // if temp.prev is not null
+      // temp.prev.next = temp.next
+      // update tail
+    } else {
+
+      if (temp.prev != null) {
+        temp.prev.next = temp.next;
+      }
+      if (temp.next != null) {
+        temp.next.prev = temp.prev;
+      }
+    }
+    size--;
+    return temp.item;
+  }
+
   private class DLinkedNode {
     E item;
     DLinkedNode next;
@@ -36,89 +165,76 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
     }
   }
   
-  public interface ListIterator<E> {
-    void add(E e); // Inserts the specified element to the list. (Optional for this assignment)
+  private class MyListIterator implements ListIterator<E>{
+    private DLinkedNode nextNode;
+    private int nextIndex;
 
-    boolean hasNext(); // Returns true if this list iterator has more elements while traversing in the forward direction.
+    public MyListIterator() {
+      nextIndex=0;
+      //nextNode=traverse[0];
+    }
+    
+    @Override
+    public boolean hasNext() {
+      if (nextNode != null) {
+        
+      }
+      return true;
+    }
 
-    boolean hasPrevious(); // Returns true if this list iterator has more elements while traversing in the reverse direction.
+    @Override
+    public E next() {
+      // TODO Auto-generated method stub
+      return null;
+    }
 
-    E next(); // Returns the next Element.
+    @Override
+    public boolean hasPrevious() {
+      // TODO Auto-generated method stub
+      return false;
+    }
 
-    int nextIndex(); // Returns the index of the next element.
+    @Override
+    public E previous() {
+      // TODO Auto-generated method stub
+      return null;
+    }
 
-    E previous(); // Returns the previous Element
+    @Override
+    public int nextIndex() {
+      // TODO Auto-generated method stub
+      return 0;
+    }
 
-    int previousIndex(); // Returns the index of the previous element.
+    @Override
+    public int previousIndex() {
+      // TODO Auto-generated method stub
+      return 0;
+    }
 
-    void remove(); // Removes from the list the last element that was returned. (Optional for this assignment)
+    @Override
+    public void remove() {
+      throw new UnsupportedOperationException();
+      
+    }
 
-    void set(E e); // Replaces the last element returned. (Optional for this assignment)
+    @Override
+    public void set(E e) {
+      throw new UnsupportedOperationException();
+      
+    }
 
+    @Override
+    public void add(E e) {
+      throw new UnsupportedOperationException();
+      
+    }
+    
   }
   
-  @Override
-  public Iterator<E> iterator() {
-    // copy paste 
-    return null;
-  }
-
-  public Iterator<E> iterator(Comparator<E> c){
-    //return new my....
-    return null;
-  }
-
-  @Override
-  public E get(int index) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-
-  @Override
-  public E set(int index, E element) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-
-  @Override
-  public int indexOf(Object obj) {
-    // TODO Auto-generated method stub
-    return 0;
-  }
-
-
-  @Override
-  public int size() {
-    // TODO Auto-generated method stub
-    return 0;
-  }
-
-
-  @Override
-  public boolean add(E e) {
-    // TODO Auto-generated method stub
-    return false;
-  }
-
-
-  @Override
-  public void add(int index, E element) {
-    // TODO Auto-generated method stub
-
-  }
-
-
-  @Override
-  public E remove(int index) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
 }
 
-private class MyListIterator implemnts ListIterator<E>{
+//private class MyListIterator implemnts ListIterator<E>{
  //private dlinkednode nextNode;
  // private int nextIndex;
   
@@ -186,4 +302,4 @@ private class MyListIterator implemnts ListIterator<E>{
   
   //}
   
-}
+//}
