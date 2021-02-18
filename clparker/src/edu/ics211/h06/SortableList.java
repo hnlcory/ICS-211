@@ -18,6 +18,9 @@ import edu.ics211.h04.IList211;
 public class SortableList<E> implements IList211<E>, Iterable<E> {
   private DLinkedNode tail;
   private int size;
+  int swaps = 0;
+  int comps = 0;
+  long sortTime =0;
   /**
    * 
    */
@@ -26,6 +29,37 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
     size=0;
   }
 
+  public void bubbleSort(Comparator<E> compare) {
+    long startTime = System.nanoTime();
+    boolean exchange = false;
+    int pass = 0;
+
+    do { // do while loop
+      exchange = false; // set changed
+      for (int i = 1; i < size - pass; i++) {
+
+        if (get(i) == null) {
+          break;
+        }
+        comps++;// count compare
+
+        int result = compare.compare(get(i), get(i - 1));
+
+        if (result < 0) {
+          swaps++;// count swap
+          E temp = get(i);
+          set(i, get(i - 1));
+          set(i - 1, temp);
+          exchange = true;// change exchange to true
+        }
+      }
+      pass++;
+    } while (exchange);
+    long endTime = System.nanoTime(); // get ending time from nanoTime
+    this.sortTime = endTime - startTime;// subtract ending from starting to stortTime
+  }
+  
+  
   @Override
   public Iterator<E> iterator() {
     return new MyListIterator();
@@ -263,8 +297,13 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
     private int nextIndex;
 
     public MySortedIterator(Comparator<E> c) {
-      //init variables
-      sorted=null;
+      sorted=null;//init variables
+      for (int i=0; i<size;i++) {
+        sorted.add(get(i));
+        sorted.bubbleSort(c);//add in bubble sort or call?
+        nextIndex=0;
+      }
+      
       //copy all items from this into sorted(for int i=0; i<size ; i++) sorted.add(get[i])
       //  sort sorted (bubble sort)
       //nextIndex=0
@@ -272,16 +311,20 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
     }
     @Override
     public boolean hasNext() {
-      // return nextIndex<size
-      return false;
+      return nextIndex<size;
     }
 
     @Override
     public E next() {
+      if (hasNext() == true) {
+        return sorted.get(nextIndex++);
+      }
+      else {
+        throw new UnsupportedOperationException();
+      }
       //if hasNext
       //return sorted.get[nextIndex++]
       //else throw exception
-      return null;
     }
     
   }
