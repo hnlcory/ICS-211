@@ -12,7 +12,7 @@ import edu.ics211.h04.IList211;
 //import edu.ics211.h05.SortableList.DLinkedNode;
 
 /**
- * @author hnlcory
+ * @author Cory Parker
  *
  */
 public class SortableList<E> implements IList211<E>, Iterable<E> {
@@ -28,13 +28,11 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
 
   @Override
   public Iterator<E> iterator() {
-    //return new MyListIterator
-    // TODO Auto-generated method stub
-    return null;
+    return new MyListIterator();
   }
   
   public Iterator<E> iterator(Comparator<E> c){//import comparator?
-   return null; 
+    return new MySortedIterator(c); 
   }
   
   private void checkIndex(int index) {
@@ -259,6 +257,35 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
     }
     
   }
+  
+  private class MySortedIterator implements Iterator<E>{
+    private SortableList<E> sorted;
+    private int nextIndex;
+
+    public MySortedIterator(Comparator<E> c) {
+      //init variables
+      sorted=null;
+      //copy all items from this into sorted(for int i=0; i<size ; i++) sorted.add(get[i])
+      //  sort sorted (bubble sort)
+      //nextIndex=0
+      
+    }
+    @Override
+    public boolean hasNext() {
+      // return nextIndex<size
+      return false;
+    }
+
+    @Override
+    public E next() {
+      //if hasNext
+      //return sorted.get[nextIndex++]
+      //else throw exception
+      return null;
+    }
+    
+  }
+  
   
 }
 
