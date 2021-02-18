@@ -3,11 +3,13 @@
  */
 package edu.ics211.h06;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.ListIterator;
+import java.util.NoSuchElementException;
 
 import edu.ics211.h04.IList211;
-import edu.ics211.h05.SortableList.DLinkedNode;
+//import edu.ics211.h05.SortableList.DLinkedNode;
 
 /**
  * @author hnlcory
@@ -24,6 +26,17 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
     size=0;
   }
 
+  @Override
+  public Iterator<E> iterator() {
+    //return new MyListIterator
+    // TODO Auto-generated method stub
+    return null;
+  }
+  
+  public Iterator<E> iterator(Comparator<E> c){//import comparator?
+   return null; 
+  }
+  
   private void checkIndex(int index) {
     if (index < 0 || index >= size) {
       throw new IndexOutOfBoundsException();
@@ -169,47 +182,62 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
     private DLinkedNode nextNode;
     private int nextIndex;
 
-    public MyListIterator() {
+    public MyListIterator() {//?
       nextIndex=0;
       //nextNode=traverse[0];
     }
     
     @Override
     public boolean hasNext() {
-      if (nextNode != null) {
-        
+      if (nextNode != null) {  
+        return true;
       }
-      return true;
+      return false;
     }
 
     @Override
     public E next() {
-      // TODO Auto-generated method stub
-      return null;
+      if (hasNext() == true) {
+        E data = nextNode.item;
+        nextNode= nextNode.next;//update nextNode?
+        nextIndex=nextIndex+1;//update nextIndex?
+        return data;
+      }
+      else { 
+        throw new NoSuchElementException();
+      }
     }
 
     @Override
     public boolean hasPrevious() {
-      // TODO Auto-generated method stub
+      if (nextNode.prev != null || nextNode != null) {
+        return true;
+      }
       return false;
     }
 
     @Override
     public E previous() {
-      // TODO Auto-generated method stub
-      return null;
+      if (hasPrevious() == true) {
+        E data = nextNode.prev.item;
+        nextNode = nextNode.prev;
+        nextIndex=nextIndex-1;
+        return data;
+      }
+      else {
+        throw new NoSuchElementException();
+      }
     }
 
+    
     @Override
     public int nextIndex() {
-      // TODO Auto-generated method stub
-      return 0;
+      return nextIndex;
     }
 
     @Override
     public int previousIndex() {
-      // TODO Auto-generated method stub
-      return 0;
+      return nextIndex-1;
     }
 
     @Override
