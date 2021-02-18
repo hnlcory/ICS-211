@@ -18,7 +18,7 @@ import edu.ics211.h04.IList211;
 public class SortableList<E> implements IList211<E>, Iterable<E> {
   private DLinkedNode tail;
   private int size;
-  int swaps = 0;
+  int swaps = 0;//imports of sort
   int comps = 0;
   long sortTime =0;
   /**
@@ -252,8 +252,8 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
     public E previous() {
       if (hasPrevious() == true) {
         E data = nextNode.prev.item;
-        nextNode = nextNode.prev;
-        nextIndex=nextIndex-1;
+        nextNode = nextNode.prev;//update nextNode?
+        nextIndex=nextIndex-1;//update nextIndex?
         return data;
       }
       else {
@@ -297,7 +297,7 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
     private int nextIndex;
 
     public MySortedIterator(Comparator<E> c) {
-      sorted=null;//init variables
+      sorted=null;//init variables?
       for (int i=0; i<size;i++) {
         sorted.add(get(i));
         sorted.bubbleSort(c);//add in bubble sort or call?
