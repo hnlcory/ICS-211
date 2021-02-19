@@ -322,8 +322,7 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
     public MySortedIterator(Comparator<E> c) {
       sorted= new SortableList<E>();// init variables?
       for (int i = 0; i < size; i++) {
-        System.out.println(get(i));
-        System.out.println(i);
+        
         sorted.add(get(i));
        
       }
