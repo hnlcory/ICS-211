@@ -161,7 +161,7 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
       for (int i = size - 1; i > index; i--) {
 
         temp = temp.prev;
-        //System.out.println(temp.item);
+        // System.out.println(temp.item);
       }
       DLinkedNode e = new DLinkedNode(element, temp, temp.prev);
       if (temp.prev != null) {
@@ -232,7 +232,7 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
       while (temp.prev != null) {
         temp = temp.prev;
       }
-      //System.out.println(temp.item);
+      // System.out.println(temp.item);
       return temp;
     }
 
@@ -261,7 +261,7 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
 
     @Override
     public boolean hasPrevious() {
-      if (nextNode == null ||nextNode.prev != null ) {
+      if (nextNode == null || nextNode.prev != null) {
         return true;
       }
       return false;
@@ -320,11 +320,11 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
     private int nextIndex;
 
     public MySortedIterator(Comparator<E> c) {
-      sorted= new SortableList<E>();// init variables?
+      sorted = new SortableList<E>();// init variables?
       for (int i = 0; i < size; i++) {
-        
+
         sorted.add(get(i));
-       
+
       }
       sorted.bubbleSort(c);// add in bubble sort or call?
       nextIndex = 0;
