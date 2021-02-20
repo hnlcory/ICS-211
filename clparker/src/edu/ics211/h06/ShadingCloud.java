@@ -1,29 +1,32 @@
 /**
- * 
+ * List of Unshaded Clouds.
+ * @author Cory Parker.
  */
+
 package edu.ics211.h06;
 
 import edu.ics211.h02.AltitudeComparator;
-import java.util.List;
+import edu.ics211.h02.Cloud;
 import java.util.Arrays;
 import java.util.Iterator;
-
-import edu.ics211.h02.Cloud;
+import java.util.List;
 
 /**
- * @author Cory Parker
- *
+ * Takes clouds from array and returns above alt.
+ * 
+ * @author Cory Parker.
  */
 public class ShadingCloud implements ICloudShading {
-  public Cloud[] cList;
+  public Cloud[] cloudList;
 
   /**
    * Creates a list of clouds not shaded.
    * 
    * @author Cory Parker.
+   * @param clouds Clouds in array.
    */
   public ShadingCloud(Cloud[] clouds) {
-    cList = Arrays.copyOf(clouds, clouds.length);
+    cloudList = Arrays.copyOf(clouds, clouds.length);
     // store the clouds
   }
 
@@ -38,8 +41,8 @@ public class ShadingCloud implements ICloudShading {
     // create the returnList
 
     // add clouds to it
-    for (int i = 0; i < cList.length; i++) {
-      tempList.add(cList[i]);
+    for (int i = 0; i < cloudList.length; i++) {
+      tempList.add(cloudList[i]);
     }
 
     Iterator<Cloud> i1 = tempList.iterator(new AltitudeComparator());

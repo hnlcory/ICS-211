@@ -6,10 +6,13 @@
 package edu.ics211.h06;
 
 import edu.ics211.h04.IList211;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.List;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
+
 
 /**
  * Creates a sortable list of type E.
@@ -17,7 +20,7 @@ import java.util.NoSuchElementException;
  * @author Cory Parker.
  * @param <E> generic type.
  */
-public class SortableList<E> implements IList211<E>, Iterable<E> {
+public class SortableList<E> implements IList211<E>, Iterable<E>, List<E> {
   private DLinkedNode tail;
   private int size;
   int swaps = 0;// imports of sort
@@ -369,6 +372,110 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
       // else throw exception
     }
 
+  }
+
+  @Override
+  public boolean isEmpty() {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+
+  @Override
+  public boolean contains(Object o) {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+
+  @Override
+  public Object[] toArray() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+
+  @Override
+  public <T> T[] toArray(T[] a) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+
+  @Override
+  public boolean remove(Object o) {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+
+  @Override
+  public boolean containsAll(Collection<?> c) {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+
+  @Override
+  public boolean addAll(Collection<? extends E> c) {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+
+  @Override
+  public boolean addAll(int index, Collection<? extends E> c) {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+
+  @Override
+  public boolean removeAll(Collection<?> c) {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+
+  @Override
+  public boolean retainAll(Collection<?> c) {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+
+  @Override
+  public void clear() {
+    // TODO Auto-generated method stub
+    
+  }
+
+
+  @Override
+  public int lastIndexOf(Object o) {
+    // TODO Auto-generated method stub
+    return 0;
+  }
+
+
+  @Override
+  public ListIterator<E> listIterator() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+
+  @Override
+  public ListIterator<E> listIterator(int index) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+
+  @Override
+  public List<E> subList(int fromIndex, int toIndex) {
+    // TODO Auto-generated method stub
+    return null;
   }
 
 }
