@@ -1,20 +1,21 @@
 /**
- * 
+ * Sortable list of generic.
+ * @author Cory Parker.
  */
+
 package edu.ics211.h06;
 
-import java.util.ArrayList;
+import edu.ics211.h04.IList211;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
-import edu.ics211.h04.IList211;
-//import edu.ics211.h05.SortableList.DLinkedNode;
-
 /**
- * @author Cory Parker
- *
+ * Creates a sortable list of type E.
+ * 
+ * @author Cory Parker.
+ * @param <E> generic type.
  */
 public class SortableList<E> implements IList211<E>, Iterable<E> {
   private DLinkedNode tail;
@@ -24,7 +25,9 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
   long sortTime = 0;
 
   /**
+   * Init variables.
    * 
+   * @author Cory Parker
    */
   public SortableList() {
     tail = null;
@@ -32,6 +35,12 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
   }
 
 
+  /**
+   * Bubble sort to sort data.
+   * 
+   * @author Cory Parker.
+   * @param compare compares data.
+   */
   public void bubbleSort(Comparator<E> compare) {
     long startTime = System.nanoTime();
     boolean exchange = false;
@@ -69,7 +78,14 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
   }
 
 
-  public Iterator<E> iterator(Comparator<E> c) {// import comparator?
+  /**
+   * Iterator for going over list.
+   * 
+   * @author Cory Parker.
+   * @param c for item being compared.
+   * @return sorted item.
+   */
+  public Iterator<E> iterator(Comparator<E> c) {
     return new MySortedIterator(c);
   }
 
@@ -220,7 +236,7 @@ public class SortableList<E> implements IList211<E>, Iterable<E> {
     private DLinkedNode nextNode;
     private int nextIndex;
 
-    public MyListIterator() {// ?
+    public MyListIterator() {
       nextIndex = 0;
       // nextIndex=0
       nextNode = traverse(0);
