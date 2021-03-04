@@ -70,7 +70,7 @@ public class Stack<E> implements IStack211<E> {
     // return item
   }
 
-  private class LinkedNode {// may need to be of type E
+  private class LinkedNode {
     E item;
     LinkedNode next;
 
