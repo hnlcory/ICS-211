@@ -1,18 +1,24 @@
 /**
- * 
+ * Game of War.
+ * @author Cory Parker
  */
+
 package edu.ics211.h07;
 
 /**
+ * The game of War.
+ * 
  * @author Cory Parker
- *
  */
 public class GameOfWar implements IGameOfWar {
   private Stack<Card> playerOne;
   private Stack<Card> playerTwo;
+  Boolean tied;
 
   /**
+   * Initalize Game.
    * 
+   * @author Cory Parker
    */
   public GameOfWar() {
     playerOne = null;
@@ -41,11 +47,11 @@ public class GameOfWar implements IGameOfWar {
 
     Card oneCard = playerOne.pop();
     Card twoCard = playerTwo.pop();
-    Boolean tied;// weird not used thing?
+
     Stack<Card> playedCards = new Stack<Card>();
     // do while
     do {
-      tied = true;// weird not used thing?
+      tied = true;// moved tied declaration
       playedCards.push(oneCard);
       playedCards.push(twoCard);
 
@@ -121,6 +127,15 @@ public class GameOfWar implements IGameOfWar {
   }
 
 
+  /*
+   * Reverse the order of a stack given.
+   * 
+   * @author Cory Parker
+   * 
+   * @param stack the stack to be reversed.
+   * 
+   * @return reversed stack.
+   */
   public Stack<Card> reverseStack(Stack<Card> stack) {
     Stack<Card> temp = new Stack<Card>();
 

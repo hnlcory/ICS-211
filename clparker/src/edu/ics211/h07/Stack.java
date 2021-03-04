@@ -1,11 +1,15 @@
 /**
- * 
+ * A stack to hold items.
+ * @author Cory Parker
  */
+
 package edu.ics211.h07;
 
 import java.util.EmptyStackException;
 
 /**
+ * Stack of items.
+ * 
  * @author Cory Parker
  * @param <E> type
  *
@@ -14,7 +18,9 @@ public class Stack<E> implements IStack211<E> {
   private LinkedNode top;
 
   /**
+   * Initialize the Stack.
    * 
+   * @author Cory Parker
    */
   public Stack() {
     this.top = null;
