@@ -2,7 +2,7 @@
  * 
  */
 package edu.ics211.h07;
-import edu.ics211.h07.RankComparator;
+
 /**
  * @author Cory Parker
  *
