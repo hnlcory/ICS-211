@@ -3,6 +3,8 @@
  */
 package edu.ics211.h07;
 
+import java.util.EmptyStackException;
+
 /**
  * @author Cory Parker
  * @param <E> type
@@ -15,46 +17,66 @@ public class Stack<E> implements IStack211<E> {
    * 
    */
   public Stack() {
-    //init tio
-    //
+    this.top = null;
+    // init top
+
   }
+
 
   @Override
   public boolean empty() {
-    // return true if top is null
-    return false;
+    if (top == null) {
+      return true;
+    } else {
+      return false;
+    }
+
   }
+
 
   @Override
   public E push(E item) {
-    //create new linkednode item,top
-    //update top
-    return null;
+    LinkedNode node = new LinkedNode(item, top);
+    top = node;
+    return item;
+    // create new linkednode item,top
+    // update top
+
   }
+
 
   @Override
   public E peek() {
-    //if empty throw empty stack exception
-    //return top.item
-    return null;
+    if (empty() == true) {
+      throw new EmptyStackException();
+    }
+    return top.item;
+    // if empty throw empty stack exception
+    // return top.item
   }
+
 
   @Override
   public E pop() {
+    if (empty() == true) {
+      throw new EmptyStackException();
+    }
+    LinkedNode temp = top;// save E item instead of node?
+    top = top.next;
+    return temp.item;
     // if empty throw exception
     // remember item at top
-    //update top
-    //return item
-    return null;
+    // update top
+    // return item
   }
-  
-  private class LinkedNode{
+
+  private class LinkedNode {// may need to be of type E
     E item;
     LinkedNode next;
-    
+
     public LinkedNode(E item, LinkedNode next) {
-      this.item =item;
-      this.next= next;
+      this.item = item;
+      this.next = next;
     }
   }
 
