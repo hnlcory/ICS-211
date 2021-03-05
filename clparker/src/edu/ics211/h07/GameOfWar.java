@@ -13,7 +13,7 @@ package edu.ics211.h07;
 public class GameOfWar implements IGameOfWar {
   private Stack<Card> playerOne;
   private Stack<Card> playerTwo;
-  Boolean tied;
+  
 
   /**
    * Initalize Game.
@@ -21,8 +21,8 @@ public class GameOfWar implements IGameOfWar {
    * @author Cory Parker
    */
   public GameOfWar() {
-    playerOne = null;
-    playerTwo = null;
+    playerOne = new Stack<Card>();
+    playerTwo = new Stack<Card>();
 
     // init the member variables
   }
@@ -44,7 +44,7 @@ public class GameOfWar implements IGameOfWar {
   @Override
   public boolean playARound() {
     RankComparator compr = new RankComparator();
-
+    Boolean tied;
     Card oneCard = playerOne.pop();
     Card twoCard = playerTwo.pop();
 
@@ -79,7 +79,7 @@ public class GameOfWar implements IGameOfWar {
         // loop until someone wins or they run out of cards
         // add all cards to winners bottom of stack
       }
-    } while (tied = true);
+    } while (tied == true);
 
     // check if player1 is empty or if player2 is empty
     if (playerOne.empty() == true || playerTwo.empty() == true) {
