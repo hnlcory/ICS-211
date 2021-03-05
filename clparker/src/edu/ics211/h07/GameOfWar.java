@@ -13,18 +13,15 @@ package edu.ics211.h07;
 public class GameOfWar implements IGameOfWar {
   private Stack<Card> playerOne;
   private Stack<Card> playerTwo;
-  
 
   /**
-   * Initalize Game.
+   * Initialize Game.
    * 
    * @author Cory Parker
    */
   public GameOfWar() {
     playerOne = new Stack<Card>();
     playerTwo = new Stack<Card>();
-
-    // init the member variables
   }
 
 
@@ -34,10 +31,6 @@ public class GameOfWar implements IGameOfWar {
       playerOne.push(d.dealACard());
       playerTwo.push(d.dealACard());
     }
-    // split the cards from the deck to playerOne and playerTwo
-    // loop while d.size > 1
-    // playerOne.push(d.dealacard)
-    // playerTwo.push(d.dealacard)
   }
 
 
@@ -57,27 +50,24 @@ public class GameOfWar implements IGameOfWar {
 
       // pop one card from playerOne and two
       // compare the cards rank
-      if (compr.compare(oneCard, twoCard) >= 1) {// if one is > two
+      if (compr.compare(oneCard, twoCard) >= 1) {
         // if player one wins, add both cards to bottom of player ones stack
         tied = false;
         playerOne = combineStacks(playerOne, playedCards);
-      }
-
-      else if ((compr.compare(oneCard, twoCard) <= -1)) {// if two is > one
+      } else if ((compr.compare(oneCard, twoCard) <= -1)) {
         // else if player two wins.. same to player 2
         tied = false;
         playerTwo = combineStacks(playerTwo, playedCards);
-      }
-
-      else {
+      } else {
+        // else its a tie, pop 2 cards from player one and two
+        // loop until someone wins or they run out of cards
+        // add all cards to winners bottom of stack
         tied = true;
         playedCards.push(playerOne.pop());
         playedCards.push(playerTwo.pop());
         oneCard = playerOne.pop();
         twoCard = playerTwo.pop();
-        // else its a tie, pop 2 cards from player one and two
-        // loop until someone wins or they run out of cards
-        // add all cards to winners bottom of stack
+
       }
     } while (tied == true);
 
@@ -127,7 +117,7 @@ public class GameOfWar implements IGameOfWar {
   }
 
 
-  /*
+  /**
    * Reverse the order of a stack given.
    * 
    * @author Cory Parker
@@ -135,7 +125,7 @@ public class GameOfWar implements IGameOfWar {
    * @param stack the stack to be reversed.
    * 
    * @return reversed stack.
-   */
+   **/
   public Stack<Card> reverseStack(Stack<Card> stack) {
     Stack<Card> temp = new Stack<Card>();
 

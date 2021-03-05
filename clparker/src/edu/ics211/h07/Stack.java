@@ -24,7 +24,6 @@ public class Stack<E> implements IStack211<E> {
    */
   public Stack() {
     this.top = null;
-    // init top
 
   }
 
@@ -43,22 +42,23 @@ public class Stack<E> implements IStack211<E> {
   @Override
   public E push(E item) {
     LinkedNode node = new LinkedNode(item, top);
-    top = node;
-    return item;
     // create new linkednode item,top
     // update top
+    top = node;
+    return item;
 
   }
 
 
   @Override
   public E peek() {
+    // if empty throw empty stack exception
+    // return top.item
     if (empty() == true) {
       throw new EmptyStackException();
     }
     return top.item;
-    // if empty throw empty stack exception
-    // return top.item
+
   }
 
 
@@ -67,13 +67,14 @@ public class Stack<E> implements IStack211<E> {
     if (empty() == true) {
       throw new EmptyStackException();
     }
-    LinkedNode temp = top;// save E item instead of node?
+    LinkedNode temp = top;
     top = top.next;
-    return temp.item;
     // if empty throw exception
     // remember item at top
     // update top
     // return item
+    return temp.item;
+
   }
 
   private class LinkedNode {
