@@ -5,6 +5,7 @@ package edu.ics211.h08;
 
 import java.util.AbstractQueue;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Queue;
 
 /**
@@ -137,21 +138,41 @@ public class PacketQueue extends AbstractQueue<Packet> implements Queue<Packet> 
 
     @Override
     public boolean hasNext() {
-      // return nextIndex != rear
-      return false;
+      return nextIndex != rear;
     }
 
 
     @Override
     public Packet next() {
       // if hasNext
-      // remmeber packet at nextIndex
-      // update nextIndex
-      // return packet
+      if (hasNext()) {
+        // Remember packet at nextIndex
+        // update nextIndex
+        // return packet
+        Packet temp = packets[nextIndex];
+        nextIndex++; // update properly?****
+        return temp;
+      }
       // throw nosuchelement
-      return null;
+      else {
+        throw new NoSuchElementException();
+      }
     }
-
+    
+  }
+  
+  @Override
+  public String toString() {
+    Iterator<Packet> iter = this.iterator();// changed to iter<packet> over iter
+    StringBuilder builder = new StringBuilder();
+    builder.append("[");
+    while (iter.hasNext()) {
+      builder.append(iter.next());
+      builder.append(", ");
+    }
+    builder.substring(0, builder.length()-2);
+    builder.append("]");
+    return builder.toString();
   }
 
   @Override
