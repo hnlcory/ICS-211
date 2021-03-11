@@ -23,7 +23,7 @@ public class Router implements RouterInterface {
      // initialize the member variables
      queues = new PacketQueue[8];
      this.sender=sender;
-     this.droppedPackets = new List<Packet>();
+     droppedPackets = new List<Packets>();
   }
 
 
@@ -45,7 +45,7 @@ public class Router implements RouterInterface {
     //if bad address, droppedpacket.add(p)
     //return false
     if (address <0) {
-      droppedPacket.add(p);
+      //droppedPacket.add(p);
       return false;
     }
     //  else
