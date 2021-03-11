@@ -49,10 +49,9 @@ public class PacketQueue extends AbstractQueue<Packet> implements Queue<Packet> 
 
   @Override
   public boolean add(Packet e) {
-    if (size==packets.length) {
+    if (size == packets.length) {
       throw new IllegalStateException();
-    }
-    else {
+    } else {
       offer(e);
     }
     // boolean ret = offer(e)
@@ -65,27 +64,32 @@ public class PacketQueue extends AbstractQueue<Packet> implements Queue<Packet> 
   @Override
   public Packet poll() {
     // check if empty if so return null
-    if (size==0) {
+    if (size == 0) {
       return null;
     }
+    // Remember the packet at front
+    // update front = (front + 1) % packets.length
+    // Decrement size
+    // return remembered
     else {
       Packet temp = packets[front];
-      
+      front = (front + 1) % packets.length;
+      size--;
+      return temp;
     }
-    // remmeber the packet at front
-    // update front = (front + 1) % packets.length
-    // decrament size
-    // return remembered
-    return null;
   }
 
 
   @Override
   public Packet remove() {
     // packet = poll
+    Packet temp = poll();
     // if null throw exception
+    if (temp == null) {
+      throw new NullPointerException();
+    }
     // return packet
-    return null;
+    return temp;
   }
 
 
@@ -93,17 +97,26 @@ public class PacketQueue extends AbstractQueue<Packet> implements Queue<Packet> 
   public Packet peek() {
     // check size if 0
     // return null
+    if (size == 0) {
+      return null;
+    }
+
     // return packets[front]
-    return null;
+    return packets[front];
   }
 
 
   @Override
   public Packet element() {
     // packet - peek
+    Packet temp = peek();
     // if null throw exception
+    if (temp == null) {
+      throw new NullPointerException();
+    }
+
     // return packet
-    return null;
+    return temp;
   }
 
 
