@@ -162,11 +162,18 @@ class QueueTest {
    */
   @Test
   void testPeek() {
-  //test empty queue
+    //test empty queue
+    assertEquals(this.queue.peek(), null);
     //test queue with one element
+    this.queue.add(new Packet(1));
+    assertEquals(this.queue.peek().toString(), new Packet(1).toString());
+    assertEquals(this.queue.size(), 1);
     //queue with one empty space
+    addEight();
+    assertEquals(this.queue.peek().toString(), new Packet(1).toString());
     //queue that is full
-    fail("Not yet implemented");
+    this.queue.add(new Packet(10));
+    assertEquals(this.queue.peek().toString(), new Packet(1).toString());
   }
 
 
@@ -175,11 +182,22 @@ class QueueTest {
    */
   @Test
   void testElement() {
-  //test empty queue
+    //test empty queue 
+    try {
+    this.queue.element();
+    }catch (NullPointerException npe) {
+      assert true;
+    }
     //test queue with one element
+    this.queue.add(new Packet(1));
+    assertEquals(this.queue.element().toString(), new Packet(1).toString());
+    assertEquals(this.queue.size(), 1);
     //queue with one empty space
+    addEight();
+    assertEquals(this.queue.element().toString(), new Packet(1).toString());
     //queue that is full
-    fail("Not yet implemented");
+    this.queue.add(new Packet(10));
+    assertEquals(this.queue.element().toString(), new Packet(1).toString());
   }
 
 
@@ -201,7 +219,8 @@ class QueueTest {
    */
   @Test
   void testToString() {
-    fail("Not yet implemented");
+    this.queue.add(new Packet(1));
+    assertEquals(this.queue.peek().toString(), new Packet(1).toString());
   }
 
 }
