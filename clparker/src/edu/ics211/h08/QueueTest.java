@@ -28,12 +28,14 @@ class QueueTest {
   public void addEight() {
     for(int i=2; i<10; i++) {//should result in 2-8
       this.queue.add(new Packet(i));
-    }
-    
-    
-    
+    } 
   }
 
+  public void offerEight() {
+    for(int i=2; i<10; i++) {//should result in 2-8
+      this.queue.offer(new Packet(i));
+    }
+  }
   /**
    * Test method for {@link edu.ics211.h08.PacketQueue#size()}.
    */
@@ -73,7 +75,13 @@ class QueueTest {
     assertEquals(this.queue.size(),1);
     //test queue with one element
     //queue with one empty space
+    offerEight();
+    assertEquals(this.queue.size(),9);
     //queue that is full
+    assertEquals(this.queue.offer(new Packet(10)), true);
+    this.queue.offer(new Packet(11));
+    assertEquals(this.queue.size(),10);
+      
     
   }
 
@@ -83,11 +91,22 @@ class QueueTest {
    */
   @Test
   void testAddPacket() {
-  //test empty queue
+    //test empty queue
+    assertEquals( this.queue.add(new Packet(1)), true);
+    assertEquals(this.queue.size(),1);
     //test queue with one element
     //queue with one empty space
+    addEight();
+    assertEquals(this.queue.size(),9);
     //queue that is full
-    fail("Not yet implemented");
+    assertEquals(this.queue.add(new Packet(10)), true);
+   
+    try {
+      this.queue.add(new Packet(11));
+      fail("should throw error on full");
+    } catch(IllegalStateException ise) {
+      assert true;
+    }
   }
 
 
