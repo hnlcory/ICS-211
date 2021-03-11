@@ -3,6 +3,8 @@
  */
 package edu.ics211.h08;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -23,18 +25,22 @@ public class Router implements RouterInterface {
      // initialize the member variables
      queues = new PacketQueue[8];
      this.sender=sender;
-     droppedPackets = new List<Packets>();
+     droppedPackets = new ArrayList<Packet>();
   }
 
 
   @Override
   public void advanceTime() {
     //loop over packetqueues 
+    for (int i=0; i<8;i++) {
     //  packet= queue.poll
+      Packet temp = queues[i].poll();
     //  if packet != null
-    //    sender.send(quee number, packet)
-    
-
+      if (temp != null) {
+        // sender.send(quee number, packet)
+        sender.send(i, temp);
+      }
+    }
   }
 
 
@@ -45,26 +51,31 @@ public class Router implements RouterInterface {
     //if bad address, droppedpacket.add(p)
     //return false
     if (address <0) {
-      //droppedPacket.add(p);
+      droppedPackets.add(p);
       return false;
     }
     //  else
     //    if offer returns false droppacket,
     //    return offer result
     else {
-      
+      if (queues[address].offer(p)==false) {
+        droppedPackets.add(p);
+        return false;
+      }
     }
     
-    return false;
+    return true;
   }
 
 
   @Override
   public List<Packet> getDroppedPackets() {
     // remember dropped packets
+    List<Packet> allDrop = new ArrayList<Packet>(droppedPackets);
     //Initialize dropped packets
+    droppedPackets= new ArrayList<Packet>();
     //return remembered
-    return null;
+    return allDrop;
   }
 
 }

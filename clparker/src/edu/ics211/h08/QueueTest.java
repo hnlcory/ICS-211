@@ -209,6 +209,7 @@ class QueueTest {
    */
   @Test
   void testIterator() {
+    Iterator<Packets> itr = new Iterator<Packets>();
     // test empty queue
     // test queue with one element
     // queue with one empty space
