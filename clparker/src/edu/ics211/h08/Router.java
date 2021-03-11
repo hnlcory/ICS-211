@@ -23,7 +23,7 @@ public class Router implements RouterInterface {
      // initialize the member variables
      queues = new PacketQueue[8];
      this.sender=sender;
-     droppedPackets = new List<Packet>();
+     this.droppedPackets = new List<Packet>();
   }
 
 
