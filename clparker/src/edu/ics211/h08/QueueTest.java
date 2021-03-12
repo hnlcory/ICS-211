@@ -5,6 +5,8 @@ package edu.ics211.h08;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Iterator;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -75,7 +77,7 @@ class QueueTest {
   @Test
   void testOffer() {
     // test empty queue
-    assertEquals(this.queue.offer(new Packet(1)), true);
+    assertEquals(this.queue.offer(new Packet(0)), true);
     assertEquals(this.queue.size(), 1);
     // test queue with one element
     // queue with one empty space
@@ -209,12 +211,13 @@ class QueueTest {
    */
   @Test
   void testIterator() {
-    Iterator<Packets> itr = new Iterator<Packets>();
+    queue= new PacketQueue();
+    Iterator<Packet> itr = queue.iterator();
     // test empty queue
     // test queue with one element
     // queue with one empty space
     // queue that is full
-    fail("Not yet implemented");
+   // fail("Not yet implemented");
   }
 
 

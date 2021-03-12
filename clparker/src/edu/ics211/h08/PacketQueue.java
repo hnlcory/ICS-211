@@ -123,8 +123,8 @@ public class PacketQueue extends AbstractQueue<Packet> implements Queue<Packet> 
 
   @Override
   public Iterator<Packet> iterator() {
-    // TODO Auto-generated method stub
-    return null;
+ 
+    return new MyIterator();//****needed?
   }
 
   private class MyIterator implements Iterator<Packet> {
@@ -132,7 +132,7 @@ public class PacketQueue extends AbstractQueue<Packet> implements Queue<Packet> 
 
     public MyIterator() {
       // initalize nextIndex
-      nextIndex = front;
+      this.nextIndex = front;
     }
 
 
@@ -158,9 +158,9 @@ public class PacketQueue extends AbstractQueue<Packet> implements Queue<Packet> 
         throw new NoSuchElementException();
       }
     }
-    
+
   }
-  
+
   @Override
   public String toString() {
     Iterator<Packet> iter = this.iterator();// changed to iter<packet> over iter
@@ -170,10 +170,11 @@ public class PacketQueue extends AbstractQueue<Packet> implements Queue<Packet> 
       builder.append(iter.next());
       builder.append(", ");
     }
-    builder.substring(0, builder.length()-2);
+    builder.substring(0, builder.length() - 2);
     builder.append("]");
     return builder.toString();
   }
+
 
   @Override
   public int size() {
