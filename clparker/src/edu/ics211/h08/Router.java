@@ -24,8 +24,8 @@ public class Router implements RouterInterface {
   public Router(PacketSenderInterface sender) {
     // initialize the member variables
     queues = new PacketQueue[8];
-    for (int i=0;i<8;i++) {
-      queues[i]=new PacketQueue();
+    for (int i = 0; i < 8; i++) {
+      queues[i] = new PacketQueue();
     }
     this.sender = sender;
     droppedPackets = new ArrayList<Packet>();

@@ -211,13 +211,20 @@ class QueueTest {
    */
   @Test
   void testIterator() {
-    queue= new PacketQueue();
     Iterator<Packet> itr = queue.iterator();
     // test empty queue
+    assertEquals(itr.hasNext(), false);
     // test queue with one element
+    this.queue.add(new Packet(1));
+    assertEquals(itr.hasNext(), true);
+    itr.next();
+    assertEquals(itr.hasNext(), false);
     // queue with one empty space
+    addEight();
+    assertEquals(itr.hasNext(), true);
     // queue that is full
-   // fail("Not yet implemented");
+    this.queue.add(new Packet(1));
+    assertEquals(itr.hasNext(), true);
   }
 
 

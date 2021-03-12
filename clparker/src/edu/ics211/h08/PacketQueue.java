@@ -123,8 +123,8 @@ public class PacketQueue extends AbstractQueue<Packet> implements Queue<Packet> 
 
   @Override
   public Iterator<Packet> iterator() {
- 
-    return new MyIterator();//****needed?
+
+    return new MyIterator();// ****needed?
   }
 
   private class MyIterator implements Iterator<Packet> {
