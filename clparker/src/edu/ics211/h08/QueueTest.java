@@ -1,42 +1,48 @@
 /**
+ * Test case for PacketQueue.
  * 
+ * @author Cory Parker
  */
+
 package edu.ics211.h08;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Iterator;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * @author Cory Parker
+ * Test Case for PacketQueue.
+ * 
+ * @author Cory Parker.
  *
  */
 class QueueTest {
   public PacketQueue queue;
 
   /**
-   * @throws java.lang.Exception
+   * Setup for test queue.
+   * 
+   * @author Cory Parker.
+   * 
+   * @throws java.lang.Exception for exceptions.
    */
   @BeforeEach
   void setUp() throws Exception {
     queue = new PacketQueue();
-    // Adding to a full queue and removing from an empty queue will throw exceptions –
-    // make sure your JUnit test catches those exceptions.
   }
 
 
   public void addEight() {
-    for (int i = 2; i < 10; i++) {// should result in 2-8
+    for (int i = 2; i < 10; i++) {
       this.queue.add(new Packet(i));
     }
   }
 
 
   public void offerEight() {
-    for (int i = 2; i < 10; i++) {// should result in 2-8
+    for (int i = 2; i < 10; i++) {
       this.queue.offer(new Packet(i));
     }
   }

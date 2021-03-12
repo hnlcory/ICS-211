@@ -1,14 +1,18 @@
 /**
+ * A router to send packets.
  * 
+ * @author Cory Parker.
  */
+
 package edu.ics211.h08;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author Cory Parker
+ * Router that sends and accepts packets.
+ * 
+ * @author Cory Parker.
  *
  */
 public class Router implements RouterInterface {
@@ -56,11 +60,7 @@ public class Router implements RouterInterface {
     if (address < 0) {
       droppedPackets.add(p);
       return false;
-    }
-    // else
-    // if offer returns false droppacket,
-    // return offer result
-    else {
+    } else {
       if (queues[address].offer(p) == false) {
         droppedPackets.add(p);
         return false;

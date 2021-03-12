@@ -1,6 +1,10 @@
 /**
+ * A queue to take in packets.
+ * 
+ * @author Cory Parker.
  * 
  */
+
 package edu.ics211.h08;
 
 import java.util.AbstractQueue;
@@ -9,7 +13,9 @@ import java.util.NoSuchElementException;
 import java.util.Queue;
 
 /**
- * @author Cory Parker
+ * A queue for packets.
+ * 
+ * @author Cory Parker.
  *
  */
 public class PacketQueue extends AbstractQueue<Packet> implements Queue<Packet> {
@@ -19,7 +25,9 @@ public class PacketQueue extends AbstractQueue<Packet> implements Queue<Packet> 
   private int size;
 
   /**
+   * Initialize Packets.
    * 
+   * @author Cory Parker.
    */
   public PacketQueue() {
     this.packets = new Packet[10];
@@ -34,9 +42,8 @@ public class PacketQueue extends AbstractQueue<Packet> implements Queue<Packet> 
     // check if full, return false
     if (size == packets.length) {
       return false;
-    }
-    // else put e at rear
-    else {
+    } else {
+      // else put e at rear
       packets[rear] = e;
     }
     // update rear =(rear +1) % packets.length
@@ -67,12 +74,11 @@ public class PacketQueue extends AbstractQueue<Packet> implements Queue<Packet> 
     // check if empty if so return null
     if (size == 0) {
       return null;
-    }
-    // Remember the packet at front
-    // update front = (front + 1) % packets.length
-    // Decrement size
-    // return remembered
-    else {
+    } else {
+      // Remember the packet at front
+      // update front = (front + 1) % packets.length
+      // Decrement size
+      // return remembered
       Packet temp = packets[front];
       front = (front + 1) % packets.length;
       size--;
@@ -124,14 +130,14 @@ public class PacketQueue extends AbstractQueue<Packet> implements Queue<Packet> 
   @Override
   public Iterator<Packet> iterator() {
 
-    return new MyIterator();// ****needed?
+    return new MyIterator();
   }
 
   private class MyIterator implements Iterator<Packet> {
     private int nextIndex;
 
     public MyIterator() {
-      // initalize nextIndex
+      // Initialize nextIndex
       this.nextIndex = front;
     }
 
@@ -150,11 +156,9 @@ public class PacketQueue extends AbstractQueue<Packet> implements Queue<Packet> 
         // update nextIndex
         // return packet
         Packet temp = packets[nextIndex];
-        nextIndex++; // update properly?****
+        nextIndex++;
         return temp;
-      }
-      // throw nosuchelement
-      else {
+      } else {
         throw new NoSuchElementException();
       }
     }
@@ -163,7 +167,7 @@ public class PacketQueue extends AbstractQueue<Packet> implements Queue<Packet> 
 
   @Override
   public String toString() {
-    Iterator<Packet> iter = this.iterator();// changed to iter<packet> over iter
+    Iterator<Packet> iter = this.iterator();
     StringBuilder builder = new StringBuilder();
     builder.append("[");
     while (iter.hasNext()) {
