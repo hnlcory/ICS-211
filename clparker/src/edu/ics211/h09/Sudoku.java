@@ -23,9 +23,7 @@ public class Sudoku {
     // helper method.
 
     // check if base case is invalid
-    if (checkSudoku(sudoku, true) == false) {
-      return false;
-    }
+    
     // scan for the first empty cell
     int[] pos = findEmpty(sudoku);
 
@@ -115,7 +113,7 @@ public class Sudoku {
       }
 
       // add value to return list
-      if (valid = true) {
+      if (valid == true) {
         returnList.add(i);
       }
 
