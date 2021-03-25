@@ -21,24 +21,50 @@ public class Sudoku {
   public static boolean solveSudoku(int[][] sudoku) {
     // TODO: Implement this method recursively. You may use a recursive
     // helper method.
+
+    //check if base case is invalid
+    if (checkSudoku(sudoku,true)==false) {
+      return false;
+    }
+    // scan for the first empty cell
+    int[] pos = findEmpty(sudoku);
     
-    //scan for the first empty cell
-    //if empty cell found
-    //  get legal values
-    //  if no legal values found, return false
-    //  loop over legal values
-    // see values - sysout 
-    //    try a value sudoku[row][col]=value
-    //    if solvesudoku[sudoku] returns true, return true
-    //    if not true, try next legal value
-    //  if out of loop
-    //  set cell to 0
-    //  return false
+    
+    
     //if no empty cells then return checkSudoku (basecase1)
+    return checkSudoku(sudoku, true);
+   
+    // if empty cell found
+    // get legal values
+    // if no legal values found, return false
+    // loop over legal values
+    // see values - sysout
+    // try a value sudoku[row][col]=value
+    // if solvesudoku[sudoku] returns true, return true
+    // if not true, try next legal value
+    // if out of loop
+    // set cell to 0
+    // return false
+    // if no empty cells then return checkSudoku (basecase1)
+
     
-    return false;
   }
 
+  private static int[] findEmpty(int[][] sudoku) {
+    for (int i = 0; i < 9; i++) {
+      for (int j = 0; j < 9; j++) {
+        // if empty cell found
+        // get legal values
+        if (sudoku[i][j]==0) {
+          int[] res= {i,j};
+          return res;
+        }
+       
+      }
+    }
+    int[] res= {-1,-1};
+    return res;
+  }
 
   /**
    * Find the legal values for the given sudoku and cell.
@@ -51,20 +77,20 @@ public class Sudoku {
   public static ArrayList<Integer> legalValues(int[][] sudoku, int row, int column) {
     // TODO: Implement this method. You may want to look at the checkSudoku method
     // to see how it finds conflicts.
-    
-    //check is sudoku [row][column] is 0
-    //create return list
-    //addetive list
-    //loop over values 1-9
-    //  check if value is in the row, if is break
-    //  check if value is in column, if is break
-    //  check if value is in the 3x3, if is break
-    //  add value to return list
-    //check size of return list, if 0 return null
-    //return list
-    
-    //subrtact
-    
+
+    // check is sudoku [row][column] is 0
+    // create return list
+    // addetive list
+    // loop over values 1-9
+    // check if value is in the row, if is break
+    // check if value is in column, if is break
+    // check if value is in the 3x3, if is break
+    // add value to return list
+    // check size of return list, if 0 return null
+    // return list
+
+    // subrtact
+
     throw new UnsupportedOperationException("legalValues not implemented.");
   }
 
