@@ -22,28 +22,53 @@ public class Sudoku {
     // TODO: Implement this method recursively. You may use a recursive
     // helper method.
 
-    // check if base case is invalid
     
     // scan for the first empty cell
     int[] pos = findEmpty(sudoku);
 
     // if empty cell found
     // get legal values
-    // if no legal values found, return false
-    // loop over legal values
-    // see values - sysout
-    // try a value sudoku[row][col]=value
-    // if solvesudoku[sudoku] returns true, return true
-    // if not true, try next legal value
-    // if out of loop
-    // set cell to 0
-    // return false
-
+    if (pos != null) {
+      ArrayList<Integer> lglVals =legalValues(sudoku,pos[0],pos[1]);
+      // if no legal values return false
+      if (lglVals==null) {
+        return false;
+      }
+      // else loop over legal values
+      for (int i=0;i<lglVals.size();i++) {
+        //try value sudoku[row][col]=value
+        sudoku[pos[0]][pos[1]]=lglVals.get(i);
+        //if solvesudoku[sudoku] returns true, return true
+        if (solveSudoku(sudoku)==true) {
+          return true;
+        }
+      }
+      //if out of loop
+      //set cell to 0
+      //return false
+      sudoku[pos[0]][pos[1]]=0;
+      return false;
+    }
+    
+    
+    // scan for the first empty cell
+    // if empty cell found
+    //    get legal values
+    //    if no legal values return false
+    //    else loop over legal values
+    //      try value sudoku[row][col]=value
+    //      if solvesudoku[sudoku] returns true, return true
+    //    if out of loop
+    //    set cell to 0
+    //    return false
+    // if no empty cells then return checkSudoku (basecase1)
+    
+    
     // if no empty cells then return checkSudoku (basecase1)
     if (pos == null) {
       return checkSudoku(sudoku, true);
     }
-
+    return false;
   }
 
 
