@@ -1,0 +1,11 @@
+AI Escargot writeup
+
+While attempting to solve the various test problems thrown at the brute force algorithm I noticed that by comparison to other sudoku problems, the AI Escargot 
+problem appeared to be substantially harder than the rest. While only having the given numbers in diagonals or far apart from each other, this forces the brute force 
+algorithm to go through more checks and more legal values compared to other sudoku puzzles. With more legal values and more iterations of checking rows, columns, and 3x3s to check 
+for repeating numbers, the processing time extends greatly and in turn takes longer for the program to find the working solution.
+
+In my testing, what was considered an easy sudoku problem took between 0.0022 seconds and 0.0030 seconds to solve while a slightly more advanced problem took between 
+0.0036 seconds and 0.0058 seconds to solve. While this is roughly a 60% increase in time to complete, the AI Escargot took between 0.0216 at best and 0.0222 at worst in my testing. 
+This is roughly a 980% increase in processing time between the easy sudoku and the AI Escargot problem. While both are taking short times to solve by human 
+standards this percentage increase of processing time is substantial and definitely stands out to show how much extra time it takes to solve the AI Escargot problem.
