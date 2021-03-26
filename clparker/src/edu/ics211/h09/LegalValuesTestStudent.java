@@ -1,6 +1,9 @@
 /**
+ * Tester for legalvalues method.
+ * @author Cory Parker.
  * 
  */
+
 package edu.ics211.h09;
 
 import static org.junit.Assert.assertTrue;
@@ -12,25 +15,18 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * @author Cory Parker
+ * legalValues sudoku tester.
+ * 
+ * @author Cory Parker.
  *
  */
 class LegalValuesTestStudent {
-
-  /**
-   * @throws java.lang.Exception
-   */
-  @BeforeEach
-  void setUp() throws Exception {
-  }
-
 
   /**
    * Test method for {@link edu.ics211.h09.Sudoku#legalValues(int[][], int, int)}.
    */
   @Test
   void testLegalValues() {
-    Sudoku s1 = new Sudoku();
     ArrayList<Integer> intArray = new ArrayList<Integer>();
     intArray.add(7);
 

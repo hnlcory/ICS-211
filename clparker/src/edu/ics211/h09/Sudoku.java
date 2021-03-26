@@ -6,8 +6,6 @@ import java.util.ArrayList;
  * Class for recursively finding a solution to a Sudoku problem.
  *
  * @author Biagioni, Edoardo, Cam Moore
- * @date October 23, 2013
- * @missing solveSudoku and legalValues, to be implemented by the students in ICS 211
  */
 public class Sudoku {
 
@@ -15,8 +13,7 @@ public class Sudoku {
    * Find an assignment of values to sudoku cells that makes the sudoku valid.
    *
    * @param sudoku to be solved
-   * @return whether a solution was found if a solution was found, the sudoku is filled in with the solution if no
-   * solution was found, restores the sudoku to its original value
+   * @return whether a solution was found if a solution was found.
    */
   public static boolean solveSudoku(int[][] sudoku) {
     // TODO: Implement this method recursively. You may use a recursive
@@ -55,7 +52,11 @@ public class Sudoku {
     return false;
   }
 
-
+  /**
+   * Method to find first empty spot.
+   * @author Cory Parker.
+   * @return row and col of spot or null.
+   **/
   private static int[] findEmpty(int[][] sudoku) {
     for (int i = 0; i < 9; i++) {
       for (int j = 0; j < 9; j++) {

@@ -4,8 +4,6 @@ package edu.ics211.h09;
  * Test a Sudoku solver
  * 
  * @author Biagioni Edoardo, Cam Moore, and Cory Parker
- * @date March 25,2021
- * @bugs none
  */
 public class SudokuTestStudent {
 
@@ -27,7 +25,7 @@ public class SudokuTestStudent {
 
 
   /**
-   * Test whether two sudoku are equal. If not, return a new sudoku that is blank where the two sudoku differ.
+   * Test whether two sudoku are equal.
    * 
    * @param the sudoku to be checked
    * @param the solution checked
@@ -57,7 +55,7 @@ public class SudokuTestStudent {
 
 
   /**
-   * Try to solve a sudoku. If a solution is provided, also check against the solution. Print the results.
+   * Try to solve a sudoku.
    * 
    * @param the name of this sudoku
    * @param the sudoku to be solved
@@ -130,9 +128,13 @@ public class SudokuTestStudent {
         { 3, 7, 8, 6, 1, 4, 9, 2, 5 }, { 4, 5, 2, 8, 9, 7, 6, 3, 1 }, { 6, 1, 9, 3, 5, 2, 8, 4, 7 } };
 
     testSudoku("1 number missing", tst1missing, sol1missing);
+    // test regular problems
     testSudoku("regular problem", tstRegular, solRegular);
+    // test done problem
     testSudoku("already finished problem", tstAlreadyFilled, solAlreadyFilled);
+    // test with fully blank
     testSudoku("fully blank", tstBlank, solBlank);
+    // test with a broken
     testSudoku("broken solution, --SHOULD FAIL--", tstNoSolution, null);
 
   }
