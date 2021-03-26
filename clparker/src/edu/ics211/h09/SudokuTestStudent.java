@@ -1,7 +1,5 @@
 package edu.ics211.h09;
 
-
-
 /**
  * Test a Sudoku solver
  * 
