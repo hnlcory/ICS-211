@@ -67,4 +67,9 @@ class DecimalLegalValuesTest {
     assertEquals(8, (int) legal.get(3));
   }
 
+  
+  
+  
+  
+
 }
