@@ -47,7 +47,6 @@ public class Sudoku {
       //set cell to 0
       //return false
       sudoku[pos[0]][pos[1]]=0;
-      //return false;
     }
     
     
