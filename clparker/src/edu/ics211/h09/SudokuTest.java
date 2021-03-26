@@ -73,7 +73,7 @@ public class SudokuTest {
             System.out.println("difference between solutions:\n" + Sudoku.toString(diff, true));
           }
         }
-      } else { /* the supposed solution is not a complete or valid sudoku */
+      } else { 
         if (!isFilled(sudoku)) {
           System.out.println("not completely filled:\n" + Sudoku.toString(sudoku, false));
         }
@@ -118,7 +118,7 @@ public class SudokuTest {
         { 3, 7, 8, 6, 1, 4, 9, 2, 5 }, { 4, 5, 2, 8, 9, 7, 6, 3, 1 },
         { 6, 1, 9, 3, 5, 2, 8, 4, 7 } };
 
-    /* a hard sudoku known as AI Escargot */
+    // a hard sudoku known as AI Escargot 
     int[][] example3 = { { 1, 0, 0, 0, 0, 7, 0, 9, 0 }, { 0, 3, 0, 0, 2, 0, 0, 0, 8 },
         { 0, 0, 9, 6, 0, 0, 5, 0, 0 }, { 0, 0, 5, 3, 0, 0, 9, 0, 0 },
         { 0, 1, 0, 0, 8, 0, 0, 0, 2 }, { 6, 0, 0, 0, 0, 4, 0, 0, 0 },

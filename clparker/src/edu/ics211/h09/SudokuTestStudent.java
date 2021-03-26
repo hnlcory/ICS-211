@@ -73,7 +73,7 @@ public class SudokuTestStudent {
             System.out.println("difference between solutions:\n" + Sudoku.toString(diff, true));
           }
         }
-      } else { /* the supposed solution is not a complete or valid sudoku */
+      } else { 
         if (!isFilled(sudoku)) {
           System.out.println("not completely filled:\n" + Sudoku.toString(sudoku, false));
         }
