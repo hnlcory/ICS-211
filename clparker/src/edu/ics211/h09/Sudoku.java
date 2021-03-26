@@ -16,8 +16,6 @@ public class Sudoku {
    * @return whether a solution was found if a solution was found.
    */
   public static boolean solveSudoku(int[][] sudoku) {
-    // TODO: Implement this method recursively. You may use a recursive
-    // helper method.
 
     // scan for the first empty cell
     int[] pos = findEmpty(sudoku);
@@ -52,8 +50,10 @@ public class Sudoku {
     return false;
   }
 
+
   /**
    * Method to find first empty spot.
+   * 
    * @author Cory Parker.
    * @return row and col of spot or null.
    **/
@@ -77,9 +77,9 @@ public class Sudoku {
   /**
    * Find the legal values for the given sudoku and cell.
    *
-   * @param sudoku, the sudoku being solved.
+   * @param sudoku the sudoku being solved.
    * @param row the row of the cell to get values for.
-   * @param col the column of the cell.
+   * @param column the column of the cell.
    * @return an ArrayList of the valid values.
    */
   public static ArrayList<Integer> legalValues(int[][] sudoku, int row, int column) {
@@ -140,8 +140,8 @@ public class Sudoku {
   /**
    * checks that the sudoku rules hold in this sudoku puzzle. cells that contain 0 are not checked.
    *
-   * @param the sudoku to be checked
-   * @param whether to print the error found, if any
+   * @param sudoku to be checked
+   * @param printErrors whether to print the error
    * @return true if this sudoku obeys all of the sudoku rules, otherwise false
    */
   public static boolean checkSudoku(int[][] sudoku, boolean printErrors) {
@@ -154,7 +154,7 @@ public class Sudoku {
     for (int i = 0; i < sudoku.length; i++) {
       if (sudoku[i].length != 9) {
         if (printErrors) {
-          System.out.println("sudoku row " + i + " has " + sudoku[i].length + " cells, should have 9");
+          System.out.println("row " + i + " has " + sudoku[i].length + " cells, should have 9");
         }
         return false;
       }
@@ -176,7 +176,7 @@ public class Sudoku {
         for (int m = 0; m < sudoku.length; m++) {
           if ((j != m) && (cell == sudoku[i][m])) {
             if (printErrors) {
-              System.out.println("sudoku row " + i + " has " + cell + " at both positions " + j + " and " + m);
+              System.out.println("row " + i + " has " + cell + " at positions " + j + " and " + m);
             }
             return false;
           }
@@ -185,7 +185,7 @@ public class Sudoku {
         for (int k = 0; k < sudoku.length; k++) {
           if ((i != k) && (cell == sudoku[k][j])) {
             if (printErrors) {
-              System.out.println("sudoku column " + j + " has " + cell + " at both positions " + i + " and " + k);
+              System.out.println("column " + j + " has " + cell + "at positions" + i + " and " + k);
             }
             return false;
           }
@@ -211,10 +211,10 @@ public class Sudoku {
 
 
   /**
-   * Converts the sudoku to a printable string
+   * Converts the sudoku to a printable string.
    *
-   * @param the sudoku to be converted
-   * @param whether to check for errors
+   * @param sudoku to be converted
+   * @param debug whether to check for errors
    * @return the printable version of the sudoku
    */
   public static String toString(int[][] sudoku, boolean debug) {
