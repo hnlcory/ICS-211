@@ -27,17 +27,23 @@ public class BinarySearchTree<E> implements SearchTree<E>, InOrder<E> {
     // create return list
     List<E> returnList;
     // do the inorder traversal
+    
     //return the list
-    return null;
+    
   }
   
   private void inorder(BinaryNode node, List<E> list) {
     //base case if node is null
-    
+    if (node ==null) {
+    }
+   
     //else
     //  visit left child
     //  visit node list.add(node.item)
     //  visit right child
+    else {
+      
+    }
     
   }
 
@@ -144,7 +150,11 @@ public class BinarySearchTree<E> implements SearchTree<E>, InOrder<E> {
         node.item = findLargestChild(node.left);
         return node;
       }
+       
+      
     }
+    //move last one here?
+    
   }
   
   private E findLargestChild(BinaryNode parent){// txtbook code
