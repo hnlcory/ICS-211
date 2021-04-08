@@ -3,6 +3,7 @@
  */
 package edu.ics211.h10;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -26,22 +27,20 @@ public class BinarySearchTree<E> implements SearchTree<E>, InOrder<E> {
   public List<E> inorder() {
     // create return list
     List<E> returnList;
+    returnList = new ArrayList<E>();
     // do the inorder traversal
-    
+    inorder(root,returnList);
     //return the list
-    
+    return returnList;
   }
   
   private void inorder(BinaryNode node, List<E> list) {
     //base case if node is null
-    if (node ==null) {
-    }
-   
     //else
     //  visit left child
     //  visit node list.add(node.item)
     //  visit right child
-    else {
+    if (node != null) {
       inorder(node.left,list);
       list.add(node.item);
       inorder(node.right,list);
@@ -59,11 +58,13 @@ public class BinarySearchTree<E> implements SearchTree<E>, InOrder<E> {
   private BinaryNode add(BinaryNode node, E item) {
     //if node is null, return new BinaryNode(item,nll,null)
     if (node == null) {
+      addReturn = true;
       return new BinaryNode(item,null,null);
     }
     //compare item to node.item)
     //if equal, addReturn is false, return node
     else if (comp.compare(item,node.item) == 0) {
+      addReturn = false;
       return node;
     }
     //if item > node.item, node.right = add(node.right,item)
@@ -101,7 +102,7 @@ public class BinarySearchTree<E> implements SearchTree<E>, InOrder<E> {
       return node.item;
     }
     //if target < node.item, return find(node.left,target)
-    else if (comp.compare(target,node.item) > 1) {
+    else if (comp.compare(target,node.item) < 0) {
       return find(node.left,target);
     }
     //return find(node.right,target)
@@ -123,17 +124,19 @@ public class BinarySearchTree<E> implements SearchTree<E>, InOrder<E> {
     // compare target to node.item
     // if less than, node.left = delete(node.left, target)
     if (comp.compare(target, node.item) < 0) {
-      delete(node.left,target);
+      node.left= delete(node.left,target);
+      return node;
     }
     // if greater node.right = delete(node.right,target)
-    if (comp.compare(target, node.item) > 0) {
-      delete(node.right,target);
+    else if (comp.compare(target, node.item) > 0) {
+      node.right= delete(node.right,target);
+      return node;
     }
     // if equal 
     //  deleteReturn = node.item
     
    
-    if (comp.compare(target, node.item) == 0) {
+    else {
       deletedReturn = node.item;
       //  if node.left and node.right are null, return null
       if (node.left == null && node.right == null) {
@@ -149,14 +152,22 @@ public class BinarySearchTree<E> implements SearchTree<E>, InOrder<E> {
       }
       //  else find largest of left child or smallest of right child**** textbook code
       else {
-        node.item = findLargestChild(node.left);
-        return node;
+        if (node.left.right==null) {
+         node.item=node.left.item;
+         node.left=node.left.left;
+         return node;
+        }
+        else {
+          node.item = findLargestChild(node.left);
+          return node;
+        }
+        
       }
        
       
     }
-    //move last one here?
-    
+   
+  
   }
   
   private E findLargestChild(BinaryNode parent){// txtbook code
