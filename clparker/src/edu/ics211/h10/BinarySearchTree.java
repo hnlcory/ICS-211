@@ -42,7 +42,9 @@ public class BinarySearchTree<E> implements SearchTree<E>, InOrder<E> {
     //  visit node list.add(node.item)
     //  visit right child
     else {
-      
+      inorder(node.left,list);
+      list.add(node.item);
+      inorder(node.right,list);
     }
     
   }
