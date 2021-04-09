@@ -1,23 +1,19 @@
 package edu.ics211.h10;
 
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import java.util.Comparator;
-import java.util.List;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import edu.ics211.h02.AltitudeComparator;
 import edu.ics211.h02.Cloud;
 import edu.ics211.h02.CloudShape;
 import edu.ics211.h02.MotherNature;
+import java.util.Comparator;
+import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class BinarySearchTreeTest {
   private MotherNature mother;
@@ -127,7 +123,7 @@ class BinarySearchTreeTest {
     assertEquals(cloud.getAltitude(), tree.delete(cloud).getAltitude());
     cloud = mother.formACloud(2500, CloudShape.CUMULO);
     assertEquals(cloud.getAltitude(), tree.delete(cloud).getAltitude());
-}
+  }
 
 
   @Test
