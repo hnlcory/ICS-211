@@ -1,0 +1,15 @@
+Binary Search Tree Writeup
+
+Write up a runtime analysis of each of the use of a Binary Search Tree to sort, giving the big-O for sorting, and explaining how you got your results. Send your analysis to the TA together with your code. This part counts for 25% of the grade on this assignment. Even if your code doesn’t work, you should do this part to the best of your ability.
+
+InOrder: big-O - n, My reasoning for a big o of n is because this method is recursive and calls itself meaning that this would happen only n times, leading to a big o of n.
+
+add: big-O - n - this is because the method must go through and compare the node in order until it can either add the node to the left or the right. As this would happen n times, this leads to a big o of n.
+
+contains: big-O - log n, As contains simply returns either true or false based on the results of calling the find method, this method would also take the same time to complete as well.
+
+find: big-O - log n , This method has a big o of log n because when we attempt to find something in the tree, we must navigate to the left and right. However because we cut out one with every iteration this is halving it each time leading to a big o of log n.
+
+delete: big-O - n, this is because in order to delete the target node, we must compare the other nodes to check if they are greater than, less than or possibly which is the largest child to then remove a node. Although this contains embedded if statements, this would only happen n times leading to a big o of n.
+
+remove: big-O - n As the remove method simply returns either true or false based on the result of calling the delete method, this method as well has a big O of n.
