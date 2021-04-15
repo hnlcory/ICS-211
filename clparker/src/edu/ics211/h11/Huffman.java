@@ -104,9 +104,24 @@ public class Huffman {
    * @throws IOException If cannot read from stream.
    */
   public Huffman(BitReader input) throws IOException {
+    //root=preOrder(input);
     throw new UnsupportedOperationException();
   }
 
+  private HuffmanNode<Byte> preOrder(BitReader reader) {
+    //visit the node
+    //create huffman node to return
+    //if reader.read
+    //  read the byte from the readr, store it in the node
+    //  return node
+    //else
+    //traverse to left child
+    //set left child to preOrder(reader)
+    //traverse to right child
+    //set the right child to preOrder(reader)
+    //return the node
+    return null;
+  }
 
   /**
    * Reads bits from the given reader, decoding the given number of byte values before
@@ -120,6 +135,14 @@ public class Huffman {
    */
   public void decode(int bytes, BitReader in, OutputStream out) throws IOException {
     throw new UnsupportedOperationException();
+    //loop bytes times
+    //  start at the root
+    //  loop until we get to a leaf
+    //    if in.read
+    //      go right
+    //    else
+    //      go left
+    //    write out the byte in the leaf node
   }
 
 
@@ -319,9 +342,9 @@ public class Huffman {
    * @throws IOException If there are any read/write error.
    */
   public static void decompress(InputStream in, OutputStream out) throws IOException {
-    throw new UnsupportedOperationException("You have not implemented this yet.");
     // wrap input stream in a BitReader
     // read in byte count from BitReader
+    BitReader btRdr = new BitReader((InputStream)in);
     // build a tree = new Huffman(BitReader)
     // use tree to decode given number of byte from bitreader
   }
