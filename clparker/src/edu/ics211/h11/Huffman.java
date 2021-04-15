@@ -19,22 +19,23 @@ import java.util.Queue;
 
 /**
  * Models a Huffman tree and provides both Huffman coding and decoding services.
- * <p>This Huffman tree is not generic; it only works with bytes. All Huffman instances are
- * full trees (meaning every node has 0 or 2 children). They have at least one internal
- * node. That is, the root node may never also be a leaf node.</p>
- * <p>When encoding, a Huffman tree writes the following data to the output stream:
+ * <p>
+ * This Huffman tree is not generic; it only works with bytes. All Huffman instances are full trees (meaning every node
+ * has 0 or 2 children). They have at least one internal node. That is, the root node may never also be a leaf node.
+ * </p>
+ * <p>
+ * When encoding, a Huffman tree writes the following data to the output stream:
  * <ul>
  * <li>the number of bytes to be encoded (as an int, so 4 bytes, big-endian)
- * <li>the Huffman tree used for the encoding. This is specified using a pre-order
- * DFS traversal of the tree, indicating each internal nodes with a 0 bit and each leaf
- * node a 1 bit followed immediately by the byte (8 bit) value in that leaf node.
- * <li>the encoding data, which consists of variable-length prefix-free codes describing
- * paths through the given Huffman tree to the the leaf node corresponding to each
- * original data byte.
+ * <li>the Huffman tree used for the encoding. This is specified using a pre-order DFS traversal of the tree, indicating
+ * each internal nodes with a 0 bit and each leaf node a 1 bit followed immediately by the byte (8 bit) value in that
+ * leaf node.
+ * <li>the encoding data, which consists of variable-length prefix-free codes describing paths through the given Huffman
+ * tree to the the leaf node corresponding to each original data byte.
  * </ul>
  * </p>
- * When decoding, the input stream must provide the data in exactly the format as output
- * by the encoding algorithm. If not, the resulting behavior is undefined.
+ * When decoding, the input stream must provide the data in exactly the format as output by the encoding algorithm. If
+ * not, the resulting behavior is undefined.
  *
  * @author Zach Tomaszewski
  * @since 15 Nov 2012
@@ -44,17 +45,18 @@ public class Huffman {
   public static final String HUFF_EXT = ".huff";
   private HuffmanNode<Byte> root;
 
-
   /**
    * Builds a Huffman tree suitable for encoding the given byte array.
-   * <p>The tree will contain 1 leaf node for each unique byte value and each leaf
-   * will contain a count of that byte value's frequency in the data.</p>
-   * <p>If the byte array is of size 0, no tree is constructed (ie, the root will still
-   * be null.)</p>
-   * The root node cannot be a leaf node. This is because the encoding is comprised of
-   * left and right movements from the root, and so no bit pattern corresponds to the root
-   * node itself. Therefore, if there is only a single unique byte, an extra dummy leaf
-   * node with a byte value of 0 and a count of 0 will be created but not used.
+   * <p>
+   * The tree will contain 1 leaf node for each unique byte value and each leaf will contain a count of that byte
+   * value's frequency in the data.
+   * </p>
+   * <p>
+   * If the byte array is of size 0, no tree is constructed (ie, the root will still be null.)
+   * </p>
+   * The root node cannot be a leaf node. This is because the encoding is comprised of left and right movements from the
+   * root, and so no bit pattern corresponds to the root node itself. Therefore, if there is only a single unique byte,
+   * an extra dummy leaf node with a byte value of 0 and a count of 0 will be created but not used.
    *
    * @param bytes The complete data to be encoded using this tree.
    */
@@ -96,36 +98,37 @@ public class Huffman {
 
   /**
    * Builds a Huffman tree as read from the given input bit stream.
-   * <p>The stream must be at the start of the tree data, after the byte count header.
-   * Reads from the stream until the end of the tree, which leaves the given BitReader
-   * at the start of the encoding data.</p>
+   * <p>
+   * The stream must be at the start of the tree data, after the byte count header. Reads from the stream until the end
+   * of the tree, which leaves the given BitReader at the start of the encoding data.
+   * </p>
    *
    * @param input a BitReader at the start of the pre-order traversal of the Huffman.
    * @throws IOException If cannot read from stream.
    */
   public Huffman(BitReader input) throws IOException {
-    //root=preOrder(input);
-    throw new UnsupportedOperationException();
+    root = preOrder(input);
   }
 
+
   private HuffmanNode<Byte> preOrder(BitReader reader) {
-    //visit the node
-    //create huffman node to return
-    //if reader.read
-    //  read the byte from the readr, store it in the node
-    //  return node
-    //else
-    //traverse to left child
-    //set left child to preOrder(reader)
-    //traverse to right child
-    //set the right child to preOrder(reader)
-    //return the node
+    // visit the node
+    // create huffman node to return
+    // if reader.read
+    // read the byte from the readr, store it in the node
+    // return node
+    // else
+    // traverse to left child
+    // set left child to preOrder(reader)
+    // traverse to right child
+    // set the right child to preOrder(reader)
+    // return the node
     return null;
   }
 
+
   /**
-   * Reads bits from the given reader, decoding the given number of byte values before
-   * stopping. Writes decoded bytes to
+   * Reads bits from the given reader, decoding the given number of byte values before stopping. Writes decoded bytes to
    * the given output stream.
    *
    * @param bytes The number of value to decode according to this tree
@@ -134,21 +137,33 @@ public class Huffman {
    * @throws IOException If can't read/write from/to streams
    */
   public void decode(int bytes, BitReader in, OutputStream out) throws IOException {
-    throw new UnsupportedOperationException();
-    //loop bytes times
-    //  start at the root
-    //  loop until we get to a leaf
-    //    if in.read
-    //      go right
-    //    else
-    //      go left
-    //    write out the byte in the leaf node
+    // loop bytes times
+    while (bytes > 0) {
+      // start at the root
+      HuffmanNode<Byte> node = root;
+      // loop until we get to a leaf
+      do {
+        // if in.read
+        if (in.read()) {
+          // go right
+          node = node.getLeft();
+        } else {
+          // go left
+          node = node.getRight();
+        }
+
+      } while (node.getData() == null);
+      bytes--;
+      // write out the byte in the leaf node
+      out.write(node.getData());
+
+    }
+
   }
 
 
   /**
-   * Encodes the given bytes based on this tree's structure, writing the resulting
-   * bits to the given output stream.
+   * Encodes the given bytes based on this tree's structure, writing the resulting bits to the given output stream.
    *
    * @param bytes the bytes to encode.
    * @param out the BitWriter.
@@ -174,17 +189,15 @@ public class Huffman {
 
 
   /**
-   * Loads the given map with paths through this tree to each unique leaf-node byte
-   * value. Paths are given as false and true booleans for 0/left and 1/right,
-   * respectively.
+   * Loads the given map with paths through this tree to each unique leaf-node byte value. Paths are given as false and
+   * true booleans for 0/left and 1/right, respectively.
    *
    * @param paths The map to load
    * @param node The current node to consider in a path from root to leaf
-   * @param path The path so far from root to the current node; should be empty
-   *     in the initial call to this recursive method.
+   * @param path The path so far from root to the current node; should be empty in the initial call to this recursive
+   * method.
    */
-  private static void loadPaths(Map<Byte, List<Boolean>> paths, HuffmanNode<Byte> node,
-      Deque<Boolean> path) {
+  private static void loadPaths(Map<Byte, List<Boolean>> paths, HuffmanNode<Byte> node, Deque<Boolean> path) {
     if (node == null) {
       assert false : "Fell off the tree, which should never happen.";
       return;
@@ -243,12 +256,12 @@ public class Huffman {
     return (this.root == null) ? "" : this.root.toFullString("|");
   }
 
-
   // --static methods--
 
+
   /**
-   * Compresses the file named by the given filename. Produces the output filename by
-   * appending ".huff" to the given filename.
+   * Compresses the file named by the given filename. Produces the output filename by appending ".huff" to the given
+   * filename.
    *
    * @param filename Name of the file to compress.
    * @throws IOException If cannot read/write files.
@@ -272,8 +285,8 @@ public class Huffman {
   /**
    * Compresses the given input stream, writing to the given output stream.
    * <p>
-   * Writes all required parts of the output file format: the byte count header,
-   * the encoded tree, and then the encoded data.
+   * Writes all required parts of the output file format: the byte count header, the encoded tree, and then the encoded
+   * data.
    * </p>
    *
    * @param in the InputStrem.
@@ -311,8 +324,8 @@ public class Huffman {
 
 
   /**
-   * Decompresses the file named by the given filename. Produces the output filename
-   * by removing ".huff" from the given filename.
+   * Decompresses the file named by the given filename. Produces the output filename by removing ".huff" from the given
+   * filename.
    *
    * @param filename the name of the file.
    * @throws IOException If cannot read/write the files.
@@ -344,8 +357,10 @@ public class Huffman {
   public static void decompress(InputStream in, OutputStream out) throws IOException {
     // wrap input stream in a BitReader
     // read in byte count from BitReader
-    BitReader btRdr = new BitReader((InputStream)in);
+    BitReader btRdr = new BitReader((InputStream) in);
     // build a tree = new Huffman(BitReader)
+    Huffman tree = new Huffman(btRdr);
     // use tree to decode given number of byte from bitreader
+    tree.decode(0, btRdr, out); // ****** FIX TO FIND BYTE
   }
 }
