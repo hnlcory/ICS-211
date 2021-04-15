@@ -361,6 +361,7 @@ public class Huffman {
     // build a tree = new Huffman(BitReader)
     Huffman tree = new Huffman(btRdr);
     // use tree to decode given number of byte from bitreader
-    tree.decode(0, btRdr, out); // ****** FIX TO FIND BYTE
+    int byteSize = btRdr.readInt();
+    tree.decode(byteSize, btRdr, out); 
   }
 }
