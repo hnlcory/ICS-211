@@ -146,17 +146,17 @@ public class Huffman {
         // if in.read
         if (in.read()) {
           // go right
-          node = node.getLeft();
+          node = node.getRight();
         } else {
           // go left
-          node = node.getRight();
+          node = node.getLeft();
         }
 
       } while (node.getData() == null);
-      bytes--;
+     
       // write out the byte in the leaf node
       out.write(node.getData());
-
+      bytes--;
     }
 
   }
