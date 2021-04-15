@@ -113,17 +113,28 @@ public class Huffman {
 
   private HuffmanNode<Byte> preOrder(BitReader reader) {
     // visit the node
+
+    
     // create huffman node to return
+    HuffmanNode<Byte> returnNode = new HuffmanNode<Byte>();
     // if reader.read
-    // read the byte from the readr, store it in the node
-    // return node
+    if (reader.read()) {
+      // read the byte from the reader, store it in the node
+      returnNode.setData(reader.readByte());
+      // return node
+      return returnNode;
+    }
+    
     // else
-    // traverse to left child
-    // set left child to preOrder(reader)
-    // traverse to right child
-    // set the right child to preOrder(reader)
-    // return the node
-    return null;
+    else {
+      // traverse to left child
+      // set left child to preOrder(reader)
+      // traverse to right child
+      // set the right child to preOrder(reader)
+      // return the node
+      return returnNode;
+    }
+       
   }
 
 
@@ -156,7 +167,7 @@ public class Huffman {
      
       // write out the byte in the leaf node
       out.write(node.getData());
-      bytes--;
+      bytes=bytes-1;
     }
 
   }
