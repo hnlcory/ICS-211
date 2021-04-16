@@ -11,17 +11,24 @@ public class HuffmanTest {
 
   public static void main(String[] args) {
     // TODO Auto-generated method stub
-  String compFile = "compressionTest.jpeg",decompFile = "decompressionTest.jpeg.huff";
-  
-  try {
-    Huffman.compress(compFile);
-    Huffman.decompress(decompFile);
-  } catch (IOException e) {
-    // TODO Auto-generated catch block
-    e.printStackTrace();
-  }
-  
-  
+    String compFile = "compressionTest.jpeg";
+    String decompFile = "decompressionTest.jpeg.huff";
+
+    try {
+      Huffman.compress(compFile);
+      System.out.println("Compressed " + compFile + ". " + compFile + ".huff should be the same as " + decompFile);
+    } catch (IOException e) {
+
+      e.printStackTrace();
+    }
+
+    try {
+      Huffman.decompress(decompFile);
+      System.out.println("\nDecompressed " + decompFile + ". decompressionTest.jpeg should be the same as " + compFile);
+    } catch (IOException e) {
+
+      e.printStackTrace();
+    }
   }
 
 }

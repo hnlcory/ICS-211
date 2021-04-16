@@ -113,8 +113,7 @@ public class Huffman {
 
   private HuffmanNode<Byte> preOrder(BitReader reader) {
     // visit the node
-    
-    
+
     // create huffman node to return
     HuffmanNode<Byte> returnNode = new HuffmanNode<Byte>();
     // if reader.read
@@ -124,7 +123,7 @@ public class Huffman {
       // return node
       return returnNode;
     }
-    
+
     // else
     else {
       returnNode.setLeft(preOrder(reader));
@@ -136,7 +135,7 @@ public class Huffman {
       // return the node
       return returnNode;
     }
-       
+
   }
 
 
@@ -151,11 +150,11 @@ public class Huffman {
    */
   public void decode(int bytes, BitReader in, OutputStream out) throws IOException {
     // loop bytes times
-    for (int i=0; i<bytes;i++) {
+    for (int i = 0; i < bytes; i++) {
       // start at the root
       HuffmanNode<Byte> node = root;
       // loop until we get to a leaf
-      while (!node.isLeaf()){//only leaf holds data
+      while (!node.isLeaf()) {// only leaf holds data
         // if in.read
         if (in.read()) {
           // go right
@@ -165,22 +164,21 @@ public class Huffman {
           node = node.getLeft();
         }
 
-      } 
-     
+      }
+
       // write out the byte in the leaf node
       out.write(node.getData());
-      
+
     }
 
-    
-    //loop byte times
-    //  start at root
-    //  loop until we get to a leaf
-    //    if in.read
-    //      go right
-    //    else
-    //      go left
-    //  write out byte in leaf node
+    // loop byte times
+    // start at root
+    // loop until we get to a leaf
+    // if in.read
+    // go right
+    // else
+    // go left
+    // write out byte in leaf node
   }
 
 
@@ -384,8 +382,8 @@ public class Huffman {
     int byteSize = btRdr.readInt();
     Huffman tree = new Huffman(btRdr);
     // use tree to decode given number of byte from bitreader
-   
-    tree.decode(byteSize, btRdr, out); 
+
+    tree.decode(byteSize, btRdr, out);
     btRdr.close();
   }
 }
