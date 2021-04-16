@@ -100,7 +100,7 @@ public class Huffman {
    * Builds a Huffman tree as read from the given input bit stream.
    * <p>
    * The stream must be at the start of the tree data, after the byte count header. Reads from the stream until the end
-   * of the tree, which leaves the given BitReader at the start of the encoding data.
+   * of the tree. Leaves the given BitReader at the start of the encoding data.
    * </p>
    *
    * @param input a BitReader at the start of the pre-order traversal of the Huffman.
@@ -122,10 +122,7 @@ public class Huffman {
       returnNode.setData(reader.readByte());
       // return node
       return returnNode;
-    }
-
-    // else
-    else {
+    } else {
       returnNode.setLeft(preOrder(reader));
       // traverse to left child
       // set left child to preOrder(reader)
@@ -154,7 +151,7 @@ public class Huffman {
       // start at the root
       HuffmanNode<Byte> node = root;
       // loop until we get to a leaf
-      while (!node.isLeaf()) {// only leaf holds data
+      while (!node.isLeaf()) {
         // if in.read
         if (in.read()) {
           // go right
@@ -171,19 +168,11 @@ public class Huffman {
 
     }
 
-    // loop byte times
-    // start at root
-    // loop until we get to a leaf
-    // if in.read
-    // go right
-    // else
-    // go left
-    // write out byte in leaf node
   }
 
 
   /**
-   * Encodes the given bytes based on this tree's structure, writing the resulting bits to the given output stream.
+   * Encodes the given bytes based on this tree's structure. Writing the resulting bits to the given output stream.
    *
    * @param bytes the bytes to encode.
    * @param out the BitWriter.
@@ -214,8 +203,8 @@ public class Huffman {
    *
    * @param paths The map to load
    * @param node The current node to consider in a path from root to leaf
-   * @param path The path so far from root to the current node; should be empty in the initial call to this recursive
-   * method.
+   * @param path The path so far from root to the current node; should be empty
+   * 
    */
   private static void loadPaths(Map<Byte, List<Boolean>> paths, HuffmanNode<Byte> node, Deque<Boolean> path) {
     if (node == null) {
@@ -280,8 +269,7 @@ public class Huffman {
 
 
   /**
-   * Compresses the file named by the given filename. Produces the output filename by appending ".huff" to the given
-   * filename.
+   * Compresses the file named by the given filename. Produces the output ".huff" to the given filename.
    *
    * @param filename Name of the file to compress.
    * @throws IOException If cannot read/write files.
@@ -305,8 +293,7 @@ public class Huffman {
   /**
    * Compresses the given input stream, writing to the given output stream.
    * <p>
-   * Writes all required parts of the output file format: the byte count header, the encoded tree, and then the encoded
-   * data.
+   * Writes the output file format: the byte count header, the encoded tree, and then the encoded data.
    * </p>
    *
    * @param in the InputStrem.
@@ -344,8 +331,7 @@ public class Huffman {
 
 
   /**
-   * Decompresses the file named by the given filename. Produces the output filename by removing ".huff" from the given
-   * filename.
+   * Decompresses the file named by filename. Produces filename by removing ".huff" from the given filename.
    *
    * @param filename the name of the file.
    * @throws IOException If cannot read/write the files.

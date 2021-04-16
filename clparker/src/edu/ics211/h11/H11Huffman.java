@@ -1,18 +1,25 @@
 /**
+ * Compressing and De compressing Method.
+ * @author Cory Parker
  * 
  */
+
 package edu.ics211.h11;
 
 import java.io.IOException;
 
 /**
+ * Method to compress and decompress command line args.
+ * 
  * @author Cory Parker
  *
  */
 public class H11Huffman {
 
   /**
-   * @param args
+   * Main method to compress and decompress.
+   * 
+   * @param args arguments to pass in
    */
   public static void main(String[] args) {
     // check to see if there is a file name in args
