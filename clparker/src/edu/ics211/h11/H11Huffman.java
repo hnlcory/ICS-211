@@ -29,7 +29,7 @@ public class H11Huffman {
     if (fileName.contains(".huff")) {
       try {
         Huffman.decompress(fileName);
-        System.out.println("Decompressed");
+        System.out.println("Decompressed "+fileName);
       } catch (IOException e) {
         e.printStackTrace();
       }
@@ -37,7 +37,7 @@ public class H11Huffman {
       try {
         // else compress
         Huffman.compress(fileName);
-        System.out.println("Compressed");
+        System.out.println("Compressed "+fileName);
       } catch (IOException e) {
         e.printStackTrace();
       }

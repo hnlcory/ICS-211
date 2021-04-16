@@ -113,7 +113,7 @@ public class Huffman {
 
   private HuffmanNode<Byte> preOrder(BitReader reader) {
     // visit the node
-
+    
     
     // create huffman node to return
     HuffmanNode<Byte> returnNode = new HuffmanNode<Byte>();
@@ -127,9 +127,11 @@ public class Huffman {
     
     // else
     else {
+      returnNode.setLeft(preOrder(reader));
       // traverse to left child
       // set left child to preOrder(reader)
       // traverse to right child
+      returnNode.setRight(preOrder(reader));
       // set the right child to preOrder(reader)
       // return the node
       return returnNode;
@@ -149,11 +151,11 @@ public class Huffman {
    */
   public void decode(int bytes, BitReader in, OutputStream out) throws IOException {
     // loop bytes times
-    while (bytes > 0) {
+    for (int i=0; i<bytes;i++) {
       // start at the root
       HuffmanNode<Byte> node = root;
       // loop until we get to a leaf
-      do {
+      while (!node.isLeaf()){//only leaf holds data
         // if in.read
         if (in.read()) {
           // go right
@@ -163,13 +165,22 @@ public class Huffman {
           node = node.getLeft();
         }
 
-      } while (node.getData() == null);
+      } 
      
       // write out the byte in the leaf node
       out.write(node.getData());
-      bytes=bytes-1;
+      
     }
 
+    
+    //loop byte times
+    //  start at root
+    //  loop until we get to a leaf
+    //    if in.read
+    //      go right
+    //    else
+    //      go left
+    //  write out byte in leaf node
   }
 
 
@@ -368,11 +379,13 @@ public class Huffman {
   public static void decompress(InputStream in, OutputStream out) throws IOException {
     // wrap input stream in a BitReader
     // read in byte count from BitReader
-    BitReader btRdr = new BitReader((InputStream) in);
+    BitReader btRdr = new BitReader(in);
     // build a tree = new Huffman(BitReader)
+    int byteSize = btRdr.readInt();
     Huffman tree = new Huffman(btRdr);
     // use tree to decode given number of byte from bitreader
-    int byteSize = btRdr.readInt();
+   
     tree.decode(byteSize, btRdr, out); 
+    btRdr.close();
   }
 }
