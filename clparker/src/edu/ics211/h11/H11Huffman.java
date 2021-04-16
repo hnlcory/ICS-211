@@ -15,10 +15,8 @@ public class H11Huffman {
    * @param args
    */
   public static void main(String[] args) {
-    // TODO Auto-generated method stub
     // check to see if there is a file name in args
     // if not, system.err.println with instructions
-    // system.exit(-1)
     if (args.length == 0) {
       System.err.println("Missing Args!");
       System.exit(-1);
