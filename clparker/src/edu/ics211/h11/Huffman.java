@@ -37,7 +37,7 @@ import java.util.Queue;
  * When decoding, the input stream must provide the data in exactly the format as output by the encoding algorithm. If
  * not, the resulting behavior is undefined.
  *
- * @author Zach Tomaszewski
+ * @author Zach Tomaszewski.
  * @since 15 Nov 2012
  */
 public class Huffman {
