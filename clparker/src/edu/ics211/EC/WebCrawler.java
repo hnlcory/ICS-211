@@ -13,7 +13,7 @@ import java.util.Scanner;
  */
 public class WebCrawler {
   String address;
-
+  Integer depth;
   /**
    * Initalize Variables.
    * 
@@ -22,6 +22,7 @@ public class WebCrawler {
    */
   public WebCrawler() {
     address = new String();
+    depth=0;
   }
 
 
@@ -60,8 +61,8 @@ public class WebCrawler {
     Boolean validAddress = false;
     Scanner inputScan = new Scanner(System.in);
     while (validAddress == false) {
-      System.out.println("Enter Valid Web Address: ");
-      this.address = inputScan.nextLine();
+      System.out.println("\nEnter Valid Web Address: ");
+      this.address = inputScan.next();
 
       // if address is formatted properly, set valid to true and return **save crawl depth
       if (checkAddress(this.address) == true) {
