@@ -13,7 +13,7 @@ public class MediumPotionBag implements PotionBag {
   private static MediumPotionBag instance;
 
   private int size;
-  // Use Binary Serarch tree from h10, needs potion comp
+  // Use Binary Search tree from h10
   private BinarySearchTree<Potion> tree;
 
   public static MediumPotionBag getInstance() {
@@ -33,10 +33,11 @@ public class MediumPotionBag implements PotionBag {
   @Override
   public void store(Potion p) {
     // call tree.add(p) check return value to see if p is already in tree
-    if (tree.add(p) == true) {
-      // if ok increment size
-      size++;
+    if (tree.add(p) == false) {
+
     }
+    // if ok increment size
+    size++;
 
   }
 
@@ -57,13 +58,14 @@ public class MediumPotionBag implements PotionBag {
   public Potion retrieve(Potion p) {
     // tree.delete
     if (tree.delete(p) != null) {
-      // if delete works, decrament size
+      // if delete works, decrement size
       // return p
       size--;
       return p;
+    } else {
+      return null;
     }
 
-    return null;
   }
 
 
