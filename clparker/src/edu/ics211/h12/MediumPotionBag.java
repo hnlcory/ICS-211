@@ -1,12 +1,16 @@
 /**
- * 
+ * Medium Potion Bag.
+ * @author Cory Parker
  */
+
 package edu.ics211.h12;
 
 import edu.ics211.h10.BinarySearchTree;
 
 /**
- * @author Cory-PC
+ * Potion Bag with store and retrieve methods BigO(log n).
+ * 
+ * @author Cory Parker
  *
  */
 public class MediumPotionBag implements PotionBag {
@@ -16,6 +20,12 @@ public class MediumPotionBag implements PotionBag {
   // Use Binary Search tree from h10
   private BinarySearchTree<Potion> tree;
 
+  /**
+   * Creates Instance of MediumPotionBag.
+   * 
+   * @author Cory Parker
+   * @return instance of bag
+   */
   public static MediumPotionBag getInstance() {
     if (instance == null) {
       instance = new MediumPotionBag();

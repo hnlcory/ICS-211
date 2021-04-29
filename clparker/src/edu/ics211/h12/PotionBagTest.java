@@ -20,6 +20,8 @@ public class PotionBagTest {
   private static final int NUM_POTIONS = 100000;
 
   /**
+   * Setup for test.
+   * @author Cam Moore
    * @throws java.lang.Exception if there is a problem.
    */
   @Before

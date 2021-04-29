@@ -1,12 +1,16 @@
 /**
- * 
+ * Slow Potion Bag.
+ * @author Cory Parker
  */
+
 package edu.ics211.h12;
 
 import java.util.LinkedList;
 
 /**
- * @author Cory-PC
+ * Potion Bag with store and retrieve methods BigO(n).
+ * 
+ * @author Cory Parker
  *
  */
 public class SlowPotionBag implements PotionBag {
@@ -15,6 +19,12 @@ public class SlowPotionBag implements PotionBag {
   // if use a list
   private LinkedList<Potion> list;
 
+  /**
+   * Creates Instance of SlowPotionBag.
+   * 
+   * @author Cory Parker
+   * @return instance of bag
+   */
   public static SlowPotionBag getInstance() {
     if (instance == null) {
       instance = new SlowPotionBag();
