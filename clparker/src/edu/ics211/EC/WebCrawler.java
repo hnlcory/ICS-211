@@ -1,5 +1,6 @@
 /**
- * 
+ * ICS 211 Web Crawler.
+ * @author Cory Parker
  */
 package edu.ics211.EC;
 
@@ -14,6 +15,7 @@ import java.util.Scanner;
 public class WebCrawler {
   String address;
   Integer depth;
+
   /**
    * Initalize Variables.
    * 
@@ -22,7 +24,7 @@ public class WebCrawler {
    */
   public WebCrawler() {
     address = new String();
-    depth=0;
+    depth = 0;
   }
 
 
