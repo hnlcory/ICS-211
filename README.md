@@ -1,2 +1,2 @@
 # ICS211 
-# files under edu.ics211
+# http://courses.ics.hawaii.edu/ics211s21/
